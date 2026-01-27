@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, MessageCircle, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -96,9 +96,9 @@ export function Footer() {
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
-                                <Phone className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="tel:+1234567890" className="text-neutral-400 hover:text-accent transition-colors">
-                                    +1 (234) 567-890
+                                <MessageCircle className="w-5 h-5 text-accent mt-0.5" />
+                                <a href="#" className="text-neutral-400 hover:text-accent transition-colors">
+                                    WhatsApp
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">

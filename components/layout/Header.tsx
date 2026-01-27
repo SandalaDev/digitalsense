@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import { MessageCircle, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Header() {
@@ -37,20 +38,14 @@ export function Header() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-3 group">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
-                            <span className="text-white font-bold text-xl">DS</span>
-                        </div>
-                        <div>
-                            <div className={`font-bold text-xl tracking-tight transition-colors ${isScrolled
-                                    ? 'text-foreground group-hover:text-primary'
-                                    : 'text-white group-hover:text-white/80'
-                                }`}>
-                                DIGITAL SENSE
-                            </div>
-                            <div className={`text-xs tracking-wider transition-colors ${isScrolled ? 'text-muted-foreground' : 'text-white/70'
-                                }`}>
-                                INTEGRATED SYSTEMS
-                            </div>
+                        <div className="relative w-32 h-10">
+                            <Image
+                                src="/logo white.svg"
+                                alt="Digital Sense"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
                         </div>
                     </Link>
 
@@ -61,8 +56,8 @@ export function Header() {
                                 key={item.href}
                                 href={item.href}
                                 className={`text-sm font-medium transition-colors relative group ${isScrolled
-                                        ? 'text-accent hover:text-accent/80'
-                                        : 'text-white hover:text-white/80'
+                                    ? 'text-accent hover:text-accent/80'
+                                    : 'text-white hover:text-white/80'
                                     }`}
                             >
                                 {item.label}
@@ -72,23 +67,23 @@ export function Header() {
                         ))}
                     </nav>
 
-                    {/* Phone Number & CTA */}
+                    {/* WhatsApp & CTA */}
                     <div className="hidden lg:flex items-center space-x-4">
                         <a
-                            href="tel:+1234567890"
+                            href="#"
                             className={`flex items-center space-x-2 text-sm font-medium transition-colors ${isScrolled
-                                    ? 'text-foreground/70 hover:text-accent'
-                                    : 'text-white/90 hover:text-white'
+                                ? 'text-foreground/70 hover:text-accent'
+                                : 'text-white/90 hover:text-white'
                                 }`}
                         >
-                            <Phone className="w-4 h-4" />
-                            <span>+1 (234) 567-890</span>
+                            <MessageCircle className="w-5 h-5" />
+                            <span>WhatsApp</span>
                         </a>
                         <a
                             href="#contact"
                             className={`px-6 py-2.5 rounded-lg text-sm font-medium hover:scale-105 transition-all ${isScrolled
-                                    ? 'glass text-foreground'
-                                    : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
+                                ? 'glass text-foreground'
+                                : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                                 }`}
                         >
                             Get Started
@@ -99,8 +94,8 @@ export function Header() {
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className={`lg:hidden p-2 transition-colors ${isScrolled
-                                ? 'text-foreground hover:text-accent'
-                                : 'text-white hover:text-white/80'
+                            ? 'text-foreground hover:text-accent'
+                            : 'text-white hover:text-white/80'
                             }`}
                         aria-label="Toggle menu"
                     >
@@ -130,11 +125,11 @@ export function Header() {
                                 </a>
                             ))}
                             <a
-                                href="tel:+1234567890"
+                                href="#"
                                 className="flex items-center space-x-2 text-base font-medium text-accent py-2"
                             >
-                                <Phone className="w-5 h-5" />
-                                <span>+1 (234) 567-890</span>
+                                <MessageCircle className="w-6 h-6" />
+                                <span>WhatsApp</span>
                             </a>
                             <a
                                 href="#contact"
