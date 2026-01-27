@@ -338,8 +338,8 @@ export default function Home() {
                     <Phone className="w-6 h-6 text-accent" />
                     <div>
                       <div className="text-sm text-neutral-400">Direct Line</div>
-                      <a href="tel:+1234567890" className="text-xl font-semibold hover:text-accent transition-colors">
-                        +1 (234) 567-890
+                      <a href="tel:+260966229919" className="text-xl font-semibold hover:text-accent transition-colors">
+                        +260 966229919
                       </a>
                     </div>
                   </div>

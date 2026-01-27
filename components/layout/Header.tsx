@@ -70,14 +70,14 @@ export function Header() {
                     {/* WhatsApp & CTA */}
                     <div className="hidden lg:flex items-center space-x-4">
                         <a
-                            href="#"
+                            href="tel:+260966229919"
                             className={`flex items-center space-x-2 text-sm font-medium transition-colors ${isScrolled
                                 ? 'text-foreground/70 hover:text-accent'
                                 : 'text-white/90 hover:text-white'
                                 }`}
                         >
                             <MessageCircle className="w-5 h-5" />
-                            <span>WhatsApp</span>
+                            <span>+260 966229919</span>
                         </a>
                         <a
                             href="#contact"
@@ -125,11 +125,11 @@ export function Header() {
                                 </a>
                             ))}
                             <a
-                                href="#"
+                                href="tel:+260966229919"
                                 className="flex items-center space-x-2 text-base font-medium text-accent py-2"
                             >
                                 <MessageCircle className="w-6 h-6" />
-                                <span>WhatsApp</span>
+                                <span>+260 966229919</span>
                             </a>
                             <a
                                 href="#contact"

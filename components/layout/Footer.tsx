@@ -91,21 +91,20 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
                                 <Mail className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="mailto:info@digitalsense.com" className="text-neutral-400 hover:text-accent transition-colors">
-                                    info@digitalsense.com
+                                <a href="mailto:info@digitalsense.tech" className="text-neutral-400 hover:text-accent transition-colors">
+                                    info@digitalsense.tech
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
                                 <MessageCircle className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="#" className="text-neutral-400 hover:text-accent transition-colors">
-                                    WhatsApp
+                                <a href="tel:+260966229919" className="text-neutral-400 hover:text-accent transition-colors">
+                                    +260 966229919
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
                                 <MapPin className="w-5 h-5 text-accent mt-0.5" />
                                 <span className="text-neutral-400">
-                                    123 Tech Street<br />
-                                    San Francisco, CA 94105
+                                    M82V+F9F, Lusaka, Kwamwena, Chamba Valley, Lusaka
                                 </span>
                             </li>
                         </ul>
