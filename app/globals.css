@@ -62,7 +62,31 @@
   --color-success-700: oklch(0.38 0.12 150);
   --color-success-800: oklch(0.28 0.08 150);
   --color-success-900: oklch(0.18 0.04 150);
-  
+
+  /* Warning: Amber - Alerts, operational monitoring */
+  --color-warning-50: oklch(0.97 0.02 80);
+  --color-warning-100: oklch(0.94 0.04 80);
+  --color-warning-200: oklch(0.88 0.08 80);
+  --color-warning-300: oklch(0.80 0.12 80);
+  --color-warning-400: oklch(0.72 0.15 80);
+  --color-warning-500: oklch(0.65 0.18 80);    /* Main warning */
+  --color-warning-600: oklch(0.55 0.15 80);
+  --color-warning-700: oklch(0.45 0.12 80);
+  --color-warning-800: oklch(0.35 0.08 80);
+  --color-warning-900: oklch(0.25 0.04 80);
+
+  /* Danger: Red - Risk, critical systems */
+  --color-danger-50: oklch(0.97 0.02 25);
+  --color-danger-100: oklch(0.94 0.04 25);
+  --color-danger-200: oklch(0.88 0.08 25);
+  --color-danger-300: oklch(0.78 0.12 25);
+  --color-danger-400: oklch(0.65 0.15 25);
+  --color-danger-500: oklch(0.55 0.18 25);     /* Main danger */
+  --color-danger-600: oklch(0.45 0.15 25);
+  --color-danger-700: oklch(0.35 0.12 25);
+  --color-danger-800: oklch(0.25 0.08 25);
+  --color-danger-900: oklch(0.15 0.04 25);
+
   /* Neutrals: Precision grayscale */
   --color-neutral-50: oklch(0.98 0 0);
   --color-neutral-100: oklch(0.96 0 0);
@@ -159,8 +183,27 @@
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   
+  /* === CHART COLORS === */
+  --chart-1: var(--color-accent-400);
+  --chart-2: var(--color-success-500);
+  --chart-3: var(--color-primary-500);
+  --chart-4: var(--color-warning-500);
+  --chart-5: var(--color-danger-400);
+
+  /* === SIDEBAR TOKENS === */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: var(--color-neutral-900);
+  --sidebar-primary: var(--color-primary-600);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: var(--color-neutral-900);
+  --sidebar-border: var(--color-neutral-200);
+  --sidebar-ring: var(--color-primary-400);
+
   /* === COMPONENT-SPECIFIC TOKENS === */
+  --switch-background: var(--color-neutral-300);
   --header-height: 80px;
+  --footer-height: auto;
   --max-content-width: 1440px;
   --container-padding: var(--space-6);
 }
@@ -200,10 +243,29 @@
   --glass-bg: rgba(20, 20, 40, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  
+
   --glass-hover-bg: rgba(30, 30, 50, 0.85);
   --glass-hover-border: rgba(255, 255, 255, 0.2);
   --glass-hover-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+  /* Charts - Dark Mode */
+  --chart-1: var(--color-accent-500);
+  --chart-2: var(--color-success-400);
+  --chart-3: var(--color-primary-400);
+  --chart-4: var(--color-warning-400);
+  --chart-5: var(--color-danger-500);
+
+  /* Sidebar - Dark Mode */
+  --sidebar: oklch(0.12 0.01 264);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: var(--color-accent-400);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: var(--color-neutral-800);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: var(--color-neutral-800);
+  --sidebar-ring: var(--color-accent-400);
+
+  --switch-background: var(--color-neutral-700);
 }
 
 /* === TAILWIND THEME INTEGRATION === */
@@ -227,11 +289,25 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
   --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius);
   --radius-xl: var(--radius-xl);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
@@ -379,6 +455,30 @@ html {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Energy-specific utilities */
+.text-energy {
+  color: var(--color-success-500);
+}
+
+.bg-energy {
+  background-color: var(--color-success-500);
+}
+
+.border-energy {
+  border-color: var(--color-success-500);
+}
+
+.text-gradient-energy {
+  background: linear-gradient(135deg, var(--color-success-400) 0%, var(--color-accent-400) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-energy {
+  background: linear-gradient(135deg, var(--color-success-500) 0%, var(--color-accent-500) 100%);
 }
 
 /* Animation utilities */

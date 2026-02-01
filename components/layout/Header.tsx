@@ -3,12 +3,19 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MessageCircle, Menu, X } from 'lucide-react';
+import { MessageCircle, Menu, X, ChevronDown, Zap, Monitor, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+interface NavItem {
+    label: string;
+    href: string;
+    children?: { label: string; href: string; icon: React.ComponentType<{ className?: string }>; description: string }[];
+}
 
 export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -18,9 +25,32 @@ export function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navItems = [
+    const navItems: NavItem[] = [
         { label: 'Home', href: '/' },
-        { label: 'Capabilities', href: '#capabilities' },
+        {
+            label: 'Capabilities',
+            href: '#capabilities',
+            children: [
+                {
+                    label: 'Energy & Electrical',
+                    href: '/capabilities/energy-systems',
+                    icon: Zap,
+                    description: 'Solar PV, battery storage, electrical infrastructure'
+                },
+                {
+                    label: 'IT Infrastructure',
+                    href: '#capabilities',
+                    icon: Monitor,
+                    description: 'Networks, servers, cloud solutions'
+                },
+                {
+                    label: 'Software Solutions',
+                    href: '#capabilities',
+                    icon: Code,
+                    description: 'Custom development, integrations, automation'
+                },
+            ]
+        },
         { label: 'Solutions', href: '#solutions' },
         { label: 'Contact', href: '#contact' },
     ];
@@ -52,18 +82,71 @@ export function Header() {
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex items-center space-x-8">
                         {navItems.map((item) => (
-                            <a
-                                key={item.href}
-                                href={item.href}
-                                className={`text-sm font-medium transition-colors relative group ${isScrolled
-                                    ? 'text-accent hover:text-accent/80'
-                                    : 'text-white hover:text-white/80'
-                                    }`}
+                            <div
+                                key={item.label}
+                                className="relative"
+                                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+                                onMouseLeave={() => setOpenDropdown(null)}
                             >
-                                {item.label}
-                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'
-                                    }`} />
-                            </a>
+                                {item.children ? (
+                                    <button
+                                        className={`flex items-center space-x-1 text-sm font-medium transition-colors relative group ${isScrolled
+                                            ? 'text-accent hover:text-accent/80'
+                                            : 'text-white hover:text-white/80'
+                                            }`}
+                                    >
+                                        <span>{item.label}</span>
+                                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                    </button>
+                                ) : (
+                                    <a
+                                        href={item.href}
+                                        className={`text-sm font-medium transition-colors relative group ${isScrolled
+                                            ? 'text-accent hover:text-accent/80'
+                                            : 'text-white hover:text-white/80'
+                                            }`}
+                                    >
+                                        {item.label}
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                    </a>
+                                )}
+
+                                {/* Dropdown Menu */}
+                                <AnimatePresence>
+                                    {item.children && openDropdown === item.label && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: 10 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="absolute top-full left-0 pt-4 w-72"
+                                        >
+                                            <div className="glass rounded-xl p-2 shadow-xl border border-border">
+                                                {item.children.map((child) => (
+                                                    <Link
+                                                        key={child.href}
+                                                        href={child.href}
+                                                        className="flex items-start space-x-3 p-3 rounded-lg hover:bg-accent/10 transition-colors group"
+                                                    >
+                                                        <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
+                                                            <child.icon className="w-5 h-5 text-accent group-hover:text-white" />
+                                                        </div>
+                                                        <div>
+                                                            <div className="font-medium text-foreground group-hover:text-accent transition-colors">
+                                                                {child.label}
+                                                            </div>
+                                                            <div className="text-xs text-muted-foreground">
+                                                                {child.description}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
                         ))}
                     </nav>
 
@@ -113,16 +196,51 @@ export function Header() {
                         exit={{ opacity: 0, height: 0 }}
                         className="lg:hidden glass border-t border-border"
                     >
-                        <nav className="container-custom py-6 space-y-4">
+                        <nav className="container-custom py-6 space-y-2">
                             {navItems.map((item) => (
-                                <a
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="block text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
-                                >
-                                    {item.label}
-                                </a>
+                                <div key={item.label}>
+                                    {item.children ? (
+                                        <div>
+                                            <button
+                                                onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                                                className="flex items-center justify-between w-full text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                                            >
+                                                <span>{item.label}</span>
+                                                <ChevronDown className={`w-5 h-5 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
+                                            </button>
+                                            <AnimatePresence>
+                                                {openDropdown === item.label && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        className="pl-4 space-y-1 overflow-hidden"
+                                                    >
+                                                        {item.children.map((child) => (
+                                                            <Link
+                                                                key={child.href}
+                                                                href={child.href}
+                                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                                className="flex items-center space-x-3 py-2 text-foreground/60 hover:text-accent transition-colors"
+                                                            >
+                                                                <child.icon className="w-5 h-5 text-accent" />
+                                                                <span>{child.label}</span>
+                                                            </Link>
+                                                        ))}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ) : (
+                                        <a
+                                            href={item.href}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="block text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                                        >
+                                            {item.label}
+                                        </a>
+                                    )}
+                                </div>
                             ))}
                             <a
                                 href="#"
