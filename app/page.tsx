@@ -96,23 +96,24 @@ export default function Home() {
       <HeroSlider />
 
       {/* Positioning Statement */}
-      <section className="py-24 bg-neutral-950 text-white">
-        <div className="container-custom">
+      <section className="py-32 section-dark relative">
+        <div className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+        <div className="container-custom relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-5xl mx-auto text-center"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-6">
-              <span className="text-sm font-medium text-accent">Our North Star</span>
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm mb-8">
+              <span className="text-sm font-semibold text-green-500">Our North Star</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              This capability does not exist in isolation.
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+              Systems That <span className="text-gradient-energy">Work Together</span>
             </h2>
-            <p className="text-xl text-neutral-300 leading-relaxed">
-              Every system we design reinforces four principles: <span className="text-accent font-semibold">Systems</span>, <span className="text-accent font-semibold">Integration</span>, <span className="text-accent font-semibold">Lifecycle Ownership</span>, and <span className="text-accent font-semibold">Risk Reduction</span>.
+            <p className="text-xl md:text-2xl text-white/70 leading-relaxed">
+              Digital Sense designs, integrates, and maintains physical and digital systems across energy, IT, and software. We don't just deliver components—we deliver integrated solutions that reduce risk and increase operational efficiency.
             </p>
           </motion.div>
         </div>
@@ -129,7 +130,7 @@ export default function Home() {
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Core <span className="text-gradient-primary">Capabilities</span>
+              Our <span className="text-gradient-energy">Capabilities</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Technical excellence across energy, infrastructure, and intelligent systems
@@ -155,8 +156,8 @@ export default function Home() {
                     className="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
                   >
                     <div className="flex items-center space-x-6">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-8 h-8 text-white" />
+                      <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-8 h-8 text-black" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-2">{capability.title}</h3>
@@ -220,7 +221,7 @@ export default function Home() {
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="py-32 bg-neutral-50 dark:bg-neutral-900">
+      <section id="solutions" className="py-32 section-gray">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -230,7 +231,7 @@ export default function Home() {
             className="text-center mb-20"
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Integrated <span className="text-gradient-accent">Solutions</span>
+              Integrated <span className="text-gradient-energy">Solutions</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Multi-service engagement that addresses your real operational challenges
@@ -248,9 +249,9 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group glass rounded-2xl p-8 hover:scale-[1.02] transition-all"
+                  className="group glass rounded-2xl p-8 hover:scale-[1.02] transition-all duration-300"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <Icon className="w-7 h-7 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{solution.title}</h3>

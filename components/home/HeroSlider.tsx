@@ -160,39 +160,40 @@ export function HeroSlider() {
                             className="object-cover"
                             priority
                         />
-                        {/* Dark overlay for text readability */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                        {/* Enhanced dark overlay for better text readability */}
+                        <div className="absolute inset-0 bg-black/70" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
                     </div>
 
                     {/* Content */}
-                    <div className="container-custom relative h-full flex items-center">
-                        <div className="max-w-3xl text-white">
+                    <div className="container-custom relative h-full flex items-center py-32 md:py-40">
+                        <div className="max-w-4xl text-white space-y-8">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
-                                className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass mb-8 border border-white/20"
+                                className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-accent border border-green-500/30"
                             >
-                                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                                <span className="text-sm font-medium">{slides[currentSlide].badge}</span>
+                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                <span className="text-sm font-semibold text-white">{slides[currentSlide].badge}</span>
                             </motion.div>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.3 }}
-                                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+                                className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none"
                             >
                                 {slides[currentSlide].title}
                                 <br />
-                                <span className="text-gradient-accent">{slides[currentSlide].titleHighlight}</span>
+                                <span className="text-gradient-energy">{slides[currentSlide].titleHighlight}</span>
                             </motion.h1>
 
                             <motion.p
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed max-w-2xl"
+                                className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed"
                             >
                                 {slides[currentSlide].description}
                             </motion.p>
@@ -201,18 +202,18 @@ export function HeroSlider() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.5 }}
-                                className="flex flex-col sm:flex-row items-start gap-4 mb-16"
+                                className="flex flex-col sm:flex-row gap-6 pt-4"
                             >
                                 <a
                                     href={slides[currentSlide].primaryCTA.href}
-                                    className="group px-8 py-4 rounded-xl bg-accent text-white font-medium hover:scale-105 transition-all shadow-lg hover:shadow-2xl inline-flex items-center space-x-2"
+                                    className="group px-10 py-5 rounded-xl bg-green-500 text-black font-semibold hover:bg-green-400 transition-all shadow-lg hover:shadow-2xl inline-flex items-center justify-center space-x-3"
                                 >
                                     <span>{slides[currentSlide].primaryCTA.label}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </a>
                                 <a
                                     href={slides[currentSlide].secondaryCTA.href}
-                                    className="group px-8 py-4 rounded-xl glass border border-white/30 font-medium hover:scale-105 hover:bg-white/10 transition-all inline-flex items-center space-x-2"
+                                    className="group px-10 py-5 rounded-xl glass border border-white/30 font-semibold text-white hover:bg-white/10 transition-all inline-flex items-center justify-center space-x-3"
                                 >
                                     <span>{slides[currentSlide].secondaryCTA.label}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
