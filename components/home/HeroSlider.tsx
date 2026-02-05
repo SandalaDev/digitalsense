@@ -213,7 +213,7 @@ export function HeroSlider() {
                                 </a>
                                 <a
                                     href={slides[currentSlide].secondaryCTA.href}
-                                    className="group px-10 py-5 rounded-xl glass border border-white/30 font-semibold text-white hover:bg-white/10 transition-all inline-flex items-center justify-center space-x-3"
+                                    className="group px-10 py-5 rounded-xl glass-light border border-white/20 font-semibold text-white hover:bg-white/15 transition-all inline-flex items-center justify-center space-x-3"
                                 >
                                     <span>{slides[currentSlide].secondaryCTA.label}</span>
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -284,14 +284,14 @@ export function HeroSlider() {
                         <div className="flex items-center space-x-2">
                             <button
                                 onClick={prevSlide}
-                                className="w-12 h-12 rounded-xl glass border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:scale-110 transition-all"
+                                className="w-12 h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
                                 aria-label="Previous slide"
                             >
                                 <ChevronLeft className="w-6 h-6" />
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="w-12 h-12 rounded-xl glass border border-white/20 flex items-center justify-center text-white hover:bg-white/10 hover:scale-110 transition-all"
+                                className="w-12 h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
                                 aria-label="Next slide"
                             >
                                 <ChevronRight className="w-6 h-6" />

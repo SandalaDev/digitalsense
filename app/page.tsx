@@ -249,10 +249,10 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group glass rounded-2xl p-8 hover:scale-[1.02] transition-all duration-300"
+                  className="group glass rounded-2xl p-8 hover:scale-[1.02] transition-all duration-300 border border-neutral-200 hover:border-green-500/30 hover:shadow-xl"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <Icon className="w-7 h-7 text-white" />
+                  <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                    <Icon className="w-7 h-7 text-black" />
                   </div>
                   <h3 className="text-2xl font-bold mb-4">{solution.title}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -262,7 +262,7 @@ export default function Home() {
                     {solution.stack.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium"
+                        className="px-3 py-1 rounded-full bg-green-500/10 text-green-700 text-sm font-medium border border-green-500/20"
                       >
                         {tech}
                       </span>
