@@ -39,7 +39,7 @@ export function Header() {
                 },
                 {
                     label: 'IT Infrastructure',
-                    href: '#capabilities',
+                    href: '/capabilities/it-infrastructure',
                     icon: Monitor,
                     description: 'Networks, servers, cloud solutions'
                 },
