@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { MessageCircle, Menu, X, ChevronDown, Zap, Monitor, Code } from 'lucide-react';
+import { Menu, X, ChevronDown, Zap, Monitor, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavItem {
@@ -51,8 +51,8 @@ export function Header() {
                 },
             ]
         },
-        { label: 'Solutions', href: '#solutions' },
-        { label: 'Contact', href: '#contact' },
+        { label: 'Work', href: '#featured-work' },
+        { label: 'Contact', href: '#schedule-call' },
     ];
 
     return (
@@ -150,26 +150,16 @@ export function Header() {
                         ))}
                     </nav>
 
-                    {/* WhatsApp & CTA */}
-                    <div className="hidden lg:flex items-center space-x-4">
+                    {/* CTA */}
+                    <div className="hidden lg:flex items-center">
                         <a
-                            href="#"
-                            className={`flex items-center space-x-2 text-sm font-medium transition-colors ${isScrolled
-                                ? 'text-foreground/70 hover:text-accent'
-                                : 'text-white/90 hover:text-white'
-                                }`}
-                        >
-                            <MessageCircle className="w-5 h-5" />
-                            <span>WhatsApp</span>
-                        </a>
-                        <a
-                            href="#contact"
+                            href="#schedule-call"
                             className={`px-6 py-2.5 rounded-lg text-sm font-medium hover:scale-105 transition-all ${isScrolled
                                 ? 'glass text-foreground'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                                 }`}
                         >
-                            Get Started
+                            Schedule a Call
                         </a>
                     </div>
 
@@ -243,18 +233,11 @@ export function Header() {
                                 </div>
                             ))}
                             <a
-                                href="#"
-                                className="flex items-center space-x-2 text-base font-medium text-accent py-2"
-                            >
-                                <MessageCircle className="w-6 h-6" />
-                                <span>WhatsApp</span>
-                            </a>
-                            <a
-                                href="#contact"
+                                href="#schedule-call"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="block w-full text-center glass px-6 py-3 rounded-lg font-medium text-foreground mt-4"
                             >
-                                Get Started
+                                Schedule a Call
                             </a>
                         </nav>
                     </motion.div>

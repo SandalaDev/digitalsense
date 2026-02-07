@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageCircle, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -93,12 +93,6 @@ export function Footer() {
                                 <Mail className="w-5 h-5 text-accent mt-0.5" />
                                 <a href="mailto:info@digitalsense.com" className="text-neutral-400 hover:text-accent transition-colors">
                                     info@digitalsense.com
-                                </a>
-                            </li>
-                            <li className="flex items-start space-x-3">
-                                <MessageCircle className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="#" className="text-neutral-400 hover:text-accent transition-colors">
-                                    WhatsApp
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
