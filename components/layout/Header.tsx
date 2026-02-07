@@ -45,7 +45,7 @@ export function Header() {
                 },
                 {
                     label: 'Software Solutions',
-                    href: '#capabilities',
+                    href: '/capabilities/software-development',
                     icon: Code,
                     description: 'Custom development, integrations, automation'
                 },
