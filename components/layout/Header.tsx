@@ -67,10 +67,10 @@ export function Header() {
             <div className="container-custom">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center space-x-3 group">
-                        <div className="relative w-32 h-10">
+                    <Link href="/" className="flex items-center group">
+                        <div className={`relative transition-all duration-300 ${isScrolled ? 'w-10 h-10' : 'w-60 h-[72px]'}`}>
                             <Image
-                                src="/logo white.svg"
+                                src={isScrolled ? '/logo/headerTX.svg' : '/logo/green white.svg'}
                                 alt="Digital Sense"
                                 fill
                                 className="object-contain"

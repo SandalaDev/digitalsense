@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(netstat:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(bun run tsc:*)",
+      "Bash(bun --bun run next dev)"
     ]
   }
 }

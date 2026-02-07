@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, MessageCircle, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 
 export function Footer() {
@@ -11,14 +12,13 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Company Info */}
                     <div>
-                        <div className="flex items-center space-x-3 mb-6">
-                            <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
-                                <span className="text-white font-bold text-xl">DS</span>
-                            </div>
-                            <div>
-                                <div className="font-bold text-lg">DIGITAL SENSE</div>
-                                <div className="text-xs text-neutral-400">INTEGRATED SYSTEMS</div>
-                            </div>
+                        <div className="relative w-48 h-12 mb-6">
+                            <Image
+                                src="/logo/greenwhite horizontal.svg"
+                                alt="Digital Sense"
+                                fill
+                                className="object-contain object-left"
+                            />
                         </div>
                         <p className="text-neutral-400 mb-6 leading-relaxed">
                             Delivering integrated energy, IT, and software solutions that transform operations and reduce risk.
