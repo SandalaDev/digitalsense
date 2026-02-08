@@ -12,7 +12,7 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
-import { ContactForm } from '@/components/forms/ContactForm';
+import { RFQForm } from '@/components/forms/rfq';
 
 export default function Home() {
   const [expandedCapability, setExpandedCapability] = useState<number | null>(null);
@@ -342,81 +342,113 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Schedule a Call */}
-      <section id="schedule-call" className="py-32 bg-background relative overflow-hidden">
+      {/* Request a Quote */}
+      <section id="request-quote" className="py-32 bg-background relative overflow-hidden">
         {/* Decorative corner glow */}
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-green-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
         <div className="container-custom relative">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="grid md:grid-cols-2 gap-16"
+              className="grid lg:grid-cols-5 gap-12 lg:gap-16"
             >
-              {/* Left Column - Info */}
-              <div>
+              {/* Left Column - Info (2 cols) */}
+              <div className="lg:col-span-2">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Let&apos;s Talk About
+                  Request a
                   <br />
-                  <span className="text-gradient-energy">Your Next Project</span>
+                  <span className="text-gradient-energy">Quote</span>
                 </h2>
                 <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
-                  Book a free consultation with our team. We&apos;ll discuss your requirements,
-                  explore solutions, and outline a clear path forward.
+                  Get a detailed, transparent proposal with technical specifications, clear pricing, and realistic timelines.
                 </p>
 
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-6 h-6 text-white" />
+                {/* Value Props */}
+                <div className="space-y-5 mb-10">
+                  {[
+                    {
+                      title: 'Technical Specifications',
+                      desc: 'Complete system design with equipment specs, performance metrics, and compliance standards.',
+                    },
+                    {
+                      title: 'Transparent Pricing',
+                      desc: 'Line-item breakdown showing exactly what you\u2019re paying for. No hidden costs.',
+                    },
+                    {
+                      title: 'Implementation Timeline',
+                      desc: 'Realistic project schedule from assessment through deployment.',
+                    },
+                    {
+                      title: 'ROI Analysis',
+                      desc: 'Financial projections with documented assumptions.',
+                    },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start space-x-4">
+                      <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <CheckCircle className="w-5 h-5 text-green-500" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold mb-0.5 text-sm">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Free Consultation</h3>
-                      <p className="text-muted-foreground">No obligation assessment of your requirements and goals</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Rapid Response</h3>
-                      <p className="text-muted-foreground">We&apos;ll get back to you within 24 hours</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">End-to-End Support</h3>
-                      <p className="text-muted-foreground">From scoping through delivery and ongoing maintenance</p>
-                    </div>
+                  ))}
+                </div>
+
+                {/* Process Steps (hidden on mobile) */}
+                <div className="hidden md:block mb-10">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+                    How It Works
+                  </h3>
+                  <div className="space-y-3">
+                    {[
+                      'Submit your request',
+                      'Technical review',
+                      'Site assessment (if needed)',
+                      'Detailed proposal within 48 hrs',
+                      'Consultation call',
+                    ].map((step, idx) => (
+                      <div key={idx} className="flex items-center space-x-3">
+                        <div className="w-7 h-7 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                          <span className="text-xs font-bold text-green-500">{idx + 1}</span>
+                        </div>
+                        <span className="text-sm text-muted-foreground">{step}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
+                {/* Contact info */}
+                <div className="text-sm text-muted-foreground space-y-1 mb-8">
+                  <p>Email: <a href="mailto:info@digitalsense.co.zm" className="text-foreground hover:text-green-500 transition-colors">info@digitalsense.co.zm</a></p>
+                  <p>Mon&ndash;Fri, 8:00 AM &ndash; 5:00 PM CAT</p>
+                </div>
+
                 {/* WhatsApp CTA */}
-                <a href="#" className="group mt-12 p-6 rounded-2xl bg-neutral-950 text-white flex items-center space-x-5 hover:bg-neutral-900 transition-all duration-300">
-                  <div className="w-14 h-14 rounded-xl bg-[#25D366]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366]/25 transition-colors duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" className="w-7 h-7">
+                <a href="#" className="group p-5 rounded-2xl bg-neutral-950 text-white flex items-center space-x-4 hover:bg-neutral-900 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-[#25D366]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366]/25 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" className="w-6 h-6">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <div className="text-sm text-neutral-400">Prefer to chat?</div>
-                    <div className="text-lg font-semibold text-[#25D366] group-hover:text-[#25D366]/80 transition-colors">
-                      Let&apos;s chat on WhatsApp
+                    <div className="text-base font-semibold text-[#25D366] group-hover:text-[#25D366]/80 transition-colors">
+                      WhatsApp us
                     </div>
                   </div>
                   <ArrowRight className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </a>
               </div>
 
-              {/* Right Column - Form */}
-              <ContactForm />
+              {/* Right Column - Form (3 cols) */}
+              <div className="lg:col-span-3">
+                <RFQForm />
+              </div>
             </motion.div>
           </div>
         </div>

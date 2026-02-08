@@ -9,6 +9,7 @@ const formLabels: Record<FormType, string> = {
   'energy-quote': 'Energy Quote Request',
   'software-quote': 'Software Quote Request',
   'it-assessment': 'IT Assessment Request',
+  'rfq': 'RFQ — Request for Quote',
 };
 
 function formatFieldName(key: string): string {
@@ -24,7 +25,7 @@ function buildEmailBody(formType: FormType, data: Record<string, unknown>): { te
 
   for (const [key, value] of Object.entries(data)) {
     if (value !== undefined && value !== null && value !== '') {
-      lines.push(`${formatFieldName(key)}: ${String(value)}`);
+      lines.push(`${formatFieldName(key)}: ${Array.isArray(value) ? value.join(', ') : String(value)}`);
     }
   }
 
