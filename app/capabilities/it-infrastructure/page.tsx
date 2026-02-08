@@ -23,6 +23,7 @@ import {
     Wifi
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
+import { ITAssessmentForm } from '@/components/forms/ITAssessmentForm';
 
 export default function ITInfrastructurePage() {
     const [expandedService, setExpandedService] = useState<number | null>(null);
@@ -918,115 +919,8 @@ export default function ITInfrastructurePage() {
                                 initial={{ opacity: 0, x: 30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                className="glass rounded-2xl p-8 border border-neutral-200"
                             >
-                                <h3 className="text-2xl font-bold mb-6">Schedule Your Free IT Assessment</h3>
-                                <form className="space-y-6">
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <div>
-                                            <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                                                First Name *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="firstName"
-                                                required
-                                                className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                                placeholder="John"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                                                Last Name *
-                                            </label>
-                                            <input
-                                                type="text"
-                                                id="lastName"
-                                                required
-                                                className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                                placeholder="Doe"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="email" className="block text-sm font-medium mb-2">
-                                            Email *
-                                        </label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            required
-                                            className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                            placeholder="john@company.com"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                                            Phone Number *
-                                        </label>
-                                        <input
-                                            type="tel"
-                                            id="phone"
-                                            required
-                                            className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                            placeholder="+260-XXX-XXXXXX"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="company" className="block text-sm font-medium mb-2">
-                                            Company
-                                        </label>
-                                        <input
-                                            type="text"
-                                            id="company"
-                                            className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                            placeholder="Your Company"
-                                        />
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="users" className="block text-sm font-medium mb-2">
-                                            Number of Users
-                                        </label>
-                                        <select
-                                            id="users"
-                                            className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                                        >
-                                            <option>Select range</option>
-                                            <option>1-10 users</option>
-                                            <option>11-25 users</option>
-                                            <option>26-50 users</option>
-                                            <option>51-100 users</option>
-                                            <option>100+ users</option>
-                                        </select>
-                                    </div>
-
-                                    <div>
-                                        <label htmlFor="message" className="block text-sm font-medium mb-2">
-                                            Tell Us About Your IT Needs
-                                        </label>
-                                        <textarea
-                                            id="message"
-                                            rows={4}
-                                            className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors resize-none"
-                                            placeholder="Describe your current challenges or what you're looking to improve..."
-                                        />
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        className="w-full px-8 py-4 rounded-xl bg-green-500 text-black font-semibold hover:bg-green-400 transition-all shadow-lg hover:shadow-2xl"
-                                    >
-                                        Schedule Assessment
-                                    </button>
-
-                                    <p className="text-xs text-muted-foreground text-center">
-                                        We'll respond within 24 hours to schedule your free IT assessment
-                                    </p>
-                                </form>
+                                <ITAssessmentForm />
                             </motion.div>
                         </div>
                     </div>

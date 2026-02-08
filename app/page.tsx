@@ -10,11 +10,9 @@ import {
   ArrowRight,
   CheckCircle,
   ChevronDown,
-  Calendar,
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+import { ContactForm } from '@/components/forms/ContactForm';
 
 export default function Home() {
   const [expandedCapability, setExpandedCapability] = useState<number | null>(null);
@@ -418,106 +416,7 @@ export default function Home() {
               </div>
 
               {/* Right Column - Form */}
-              <div className="glass rounded-2xl p-8 md:p-10">
-                <div className="flex items-center space-x-3 mb-8">
-                  <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-green-500" />
-                  </div>
-                  <h3 className="text-xl font-bold">Schedule a Call</h3>
-                </div>
-
-                <form className="space-y-5">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                        First Name *
-                      </label>
-                      <Input
-                        type="text"
-                        id="firstName"
-                        required
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                        Last Name *
-                      </label>
-                      <Input
-                        type="text"
-                        id="lastName"
-                        required
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email Address *
-                    </label>
-                    <Input
-                      type="email"
-                      id="email"
-                      required
-                      placeholder="john@company.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number *
-                    </label>
-                    <Input
-                      type="tel"
-                      id="phone"
-                      required
-                      placeholder="+260 97 XXX XXXX"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="interest" className="block text-sm font-medium mb-2">
-                      What can we help with? *
-                    </label>
-                    <select
-                      id="interest"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                    >
-                      <option value="">Select an area</option>
-                      <option value="energy">Energy &amp; Electrical Systems</option>
-                      <option value="it">IT &amp; Infrastructure</option>
-                      <option value="software">Software &amp; Intelligent Systems</option>
-                      <option value="integrated">Integrated Solution (multiple areas)</option>
-                      <option value="other">Something else</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Tell us more
-                    </label>
-                    <Textarea
-                      id="message"
-                      rows={3}
-                      placeholder="Briefly describe your project or challenge..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 px-6 rounded-xl bg-green-500 text-black font-semibold hover:bg-green-400 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center space-x-2 group"
-                  >
-                    <span>Schedule a Call</span>
-                    <Calendar className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    No commitment required. We&apos;ll reach out within 24 hours.
-                  </p>
-                </form>
-              </div>
+              <ContactForm />
             </motion.div>
           </div>
         </div>

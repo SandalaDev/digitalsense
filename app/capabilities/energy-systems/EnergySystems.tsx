@@ -17,11 +17,11 @@ import {
   DollarSign,
   Clock,
   Phone,
-  Mail,
-  Send
+  Mail
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
 import { EnergyCalculator, SystemConfigurations, EnergyFAQ } from '@/components/energy';
+import { EnergyQuoteForm } from '@/components/forms/EnergyQuoteForm';
 
 const services = [
   {
@@ -712,105 +712,8 @@ export function EnergySystems() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-8"
               >
-                <h3 className="text-2xl font-bold mb-6">Request Technical Assessment</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                      placeholder="john.doe@company.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                      placeholder="+260-XXX-XXXXXX"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="systemType" className="block text-sm font-medium mb-2">
-                      System Type of Interest *
-                    </label>
-                    <select
-                      id="systemType"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                    >
-                      <option value="">Select a system type</option>
-                      <option value="grid-tied">Grid-Tied (Net-Metering)</option>
-                      <option value="hybrid">Hybrid (Solar + Battery + Grid)</option>
-                      <option value="off-grid">Off-Grid (Complete Independence)</option>
-                      <option value="battery-only">Battery Backup Only</option>
-                      <option value="not-sure">Not Sure / Need Consultation</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="projectDetails" className="block text-sm font-medium mb-2">
-                      Project Details *
-                    </label>
-                    <textarea
-                      id="projectDetails"
-                      required
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors resize-none"
-                      placeholder="Tell us about your energy requirements, location, and any specific goals..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 px-6 rounded-xl bg-energy text-white font-medium hover:scale-[1.02] transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center space-x-2 group"
-                  >
-                    <span>Schedule Assessment</span>
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting this form, you agree to our privacy policy. We&apos;ll contact you within 24 hours.
-                  </p>
-                </form>
+                <EnergyQuoteForm />
               </motion.div>
             </div>
           </div>

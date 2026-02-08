@@ -22,6 +22,7 @@ import {
   Users
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
+import { SoftwareQuoteForm } from '@/components/forms/SoftwareQuoteForm';
 
 const services = [
   {
@@ -996,116 +997,8 @@ export function SoftwareSystems() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="glass rounded-2xl p-8"
               >
-                <h3 className="text-2xl font-bold mb-6">Request a Quote</h3>
-                <form className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                        First Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                        Last Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        required
-                        className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                      placeholder="john@company.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      required
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                      placeholder="+260-XXX-XXXXXX"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                      placeholder="Your Company"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="projectType" className="block text-sm font-medium mb-2">
-                      Project Type
-                    </label>
-                    <select
-                      id="projectType"
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors"
-                    >
-                      <option>Select project type</option>
-                      <option>New Website/Application</option>
-                      <option>Redesign/Migration</option>
-                      <option>E-Commerce Platform</option>
-                      <option>Brand Design</option>
-                      <option>AI Integration</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      Project Details
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-4 py-3 rounded-lg bg-input-background border border-input focus:border-ring focus:outline-none transition-colors resize-none"
-                      placeholder="Tell us about your project goals and requirements..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full px-8 py-4 rounded-xl bg-green-500 text-black font-medium hover:bg-green-400 transition-all shadow-lg hover:shadow-2xl"
-                  >
-                    Request Quote
-                  </button>
-
-                  <p className="text-xs text-muted-foreground text-center">
-                    We&apos;ll respond within 24 hours with next steps
-                  </p>
-                </form>
+                <SoftwareQuoteForm />
               </motion.div>
             </div>
           </div>
