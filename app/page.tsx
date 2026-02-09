@@ -3,54 +3,25 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HeroSlider } from '@/components/home/HeroSlider';
+import { LogoScroller } from '@/components/home/LogoScroller';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  Zap,
-  Network,
-  Code,
-  ArrowRight,
-  CheckCircle,
-  ChevronDown,
-} from 'lucide-react';
+  faBolt,
+  faNetworkWired,
+  faCode,
+  faArrowRight,
+  faCircleCheck,
+  faChevronDown,
+} from '@fortawesome/free-solid-svg-icons';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
 import { RFQForm } from '@/components/forms/rfq';
 
 export default function Home() {
   const [expandedCapability, setExpandedCapability] = useState<number | null>(null);
 
-  const clients = [
-    {
-      monogram: 'TC',
-      name: 'TechCorp Solutions',
-      service: 'Enterprise IT infrastructure overhaul across 3 data centers',
-      stat: '99.9%',
-      statLabel: 'Uptime',
-    },
-    {
-      monogram: 'GF',
-      name: 'GreenField Energy',
-      service: 'Hybrid solar & battery storage with intelligent energy management',
-      stat: '500kW',
-      statLabel: 'Installed capacity',
-    },
-    {
-      monogram: 'LM',
-      name: 'Lusaka Metro Group',
-      service: 'Network infrastructure deployment for municipal operations',
-      stat: '15',
-      statLabel: 'Sites connected',
-    },
-    {
-      monogram: 'AZ',
-      name: 'AgriTech Zambia',
-      service: 'IoT monitoring & automation platform for commercial farms',
-      stat: '40%',
-      statLabel: 'Cost reduction',
-    },
-  ];
-
   const capabilities = [
     {
-      icon: Zap,
+      icon: faBolt,
       title: 'Energy & Electrical Systems',
       description: 'Design, integrate, and maintain power systems that ensure reliable, efficient, and sustainable energy delivery.',
       details: [
@@ -62,7 +33,7 @@ export default function Home() {
       image: 'https://images.unsplash.com/photo-1545209575-704d1434f9cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
     },
     {
-      icon: Network,
+      icon: faNetworkWired,
       title: 'IT & Infrastructure Systems',
       description: 'Build robust network and infrastructure systems that enable seamless connectivity and data flow.',
       details: [
@@ -74,7 +45,7 @@ export default function Home() {
       image: 'https://images.unsplash.com/flagged/photo-1579274216947-86eaa4b00475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
     },
     {
-      icon: Code,
+      icon: faCode,
       title: 'Software & Intelligent Systems',
       description: 'Develop intelligent software solutions that automate, optimize, and transform your operations.',
       details: [
@@ -92,54 +63,8 @@ export default function Home() {
       {/* Hero Slider - 3 Business Verticals */}
       <HeroSlider />
 
-      {/* Social Proof — Logo Cards */}
-      <section className="py-28 section-dark relative overflow-hidden">
-        {/* Layered background: dot grid + radial green glow */}
-        <div className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-green-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="container-custom relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Trusted by operators who care about{' '}
-              <span className="text-gradient-energy">reliability</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 max-w-6xl mx-auto">
-            {clients.map((client, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="group relative rounded-2xl p-6 md:p-7 bg-white/[0.03] border border-white/[0.06] hover:border-green-500/30 hover:bg-white/[0.06] transition-all duration-500"
-              >
-                {/* Monogram logo mark */}
-                <div className="w-11 h-11 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-5 group-hover:bg-green-500/20 group-hover:border-green-500/40 transition-all duration-500">
-                  <span className="text-sm font-bold tracking-wider text-green-400">{client.monogram}</span>
-                </div>
-
-                <h3 className="text-[15px] font-semibold text-white mb-1.5 leading-snug">{client.name}</h3>
-                <p className="text-[13px] text-white/35 leading-relaxed mb-6">{client.service}</p>
-
-                {/* Stat — anchored to bottom */}
-                <div className="pt-4 border-t border-white/[0.06]">
-                  <div className="text-2xl md:text-3xl font-bold text-green-500 tracking-tight">{client.stat}</div>
-                  <div className="text-[11px] text-white/30 uppercase tracking-[0.15em] mt-0.5">{client.statLabel}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Logo Scroller — Social Proof */}
+      <LogoScroller />
 
       {/* Capabilities Section - Expandable */}
       <section id="capabilities" className="py-32 bg-background">
@@ -161,7 +86,6 @@ export default function Home() {
 
           <div className="space-y-4 max-w-5xl mx-auto">
             {capabilities.map((capability, index) => {
-              const Icon = capability.icon;
               const isExpanded = expandedCapability === index;
 
               return (
@@ -179,7 +103,7 @@ export default function Home() {
                   >
                     <div className="flex items-center space-x-6">
                       <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-8 h-8 text-black" />
+                        <FontAwesomeIcon icon={capability.icon} className="w-8 h-8 text-black" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold mb-2">{capability.title}</h3>
@@ -190,7 +114,7 @@ export default function Home() {
                       animate={{ rotate: isExpanded ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="w-6 h-6 text-muted-foreground" />
+                      <FontAwesomeIcon icon={faChevronDown} className="w-6 h-6 text-muted-foreground" />
                     </motion.div>
                   </button>
 
@@ -209,7 +133,7 @@ export default function Home() {
                         <ul className="space-y-3">
                           {capability.details.map((detail, idx) => (
                             <li key={idx} className="flex items-start space-x-3">
-                              <CheckCircle className="w-5 h-5 text-success-500 mt-0.5 flex-shrink-0" />
+                              <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-success-500 mt-0.5 flex-shrink-0" />
                               <span className="text-muted-foreground">{detail}</span>
                             </li>
                           ))}
@@ -220,7 +144,7 @@ export default function Home() {
                             className="inline-flex items-center space-x-2 text-accent font-medium hover:gap-3 transition-all"
                           >
                             <span>Learn More</span>
-                            <ArrowRight className="w-4 h-4" />
+                            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
                           </a>
                         </div>
                       </div>
@@ -255,12 +179,9 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold">
               Featured <span className="text-gradient-energy">Work</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real engagements, real results, real reliability
-            </p>
           </motion.div>
 
           <motion.div
@@ -270,35 +191,47 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="glass rounded-3xl overflow-hidden border border-neutral-200/80 hover:border-green-500/20 transition-all duration-500 hover:shadow-2xl">
-              <div className="grid md:grid-cols-5 gap-0">
-                {/* Content — spans 3 columns */}
-                <div className="md:col-span-3 p-10 md:p-14">
-                  <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 mb-8">
+            <div className="rounded-3xl overflow-hidden border border-neutral-200/80 hover:border-green-500/20 transition-all duration-500 hover:shadow-2xl bg-white">
+              {/* Image banner */}
+              <div className="relative h-56 md:h-72 overflow-hidden">
+                <ImageWithFallback
+                  src="/jenny-internet.jpg"
+                  alt="Jenny Internet Zambia - Connecting Africa to Information"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+                {/* Badge + Title overlaid on image */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+                  <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-sm font-semibold text-green-700">Featured Engagement</span>
+                    <span className="text-sm font-semibold text-white">Featured Engagement</span>
                   </div>
+                  <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Jenny Internet Zambia</h3>
+                  <p className="text-white/70 mt-1">Internet Service Provider &mdash; Fiber &amp; Wireless</p>
+                </div>
+              </div>
 
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">Jenny Internet Zambia</h3>
-                  <p className="text-lg text-muted-foreground mb-8">
-                    Internet Service Provider — Fiber &amp; Wireless
-                  </p>
-
-                  <p className="text-muted-foreground leading-relaxed mb-10">
+              {/* Content + Stats */}
+              <div className="grid md:grid-cols-3 gap-0">
+                {/* Content */}
+                <div className="md:col-span-2 p-8 md:p-10">
+                  <p className="text-muted-foreground leading-relaxed mb-8">
                     Digital Sense is the installation and maintenance partner for Jenny Internet&apos;s access network in Zambia,
                     supporting the rollout and ongoing reliability of fixed uncapped internet services to homes and businesses.
                   </p>
 
-                  <div className="mb-10">
-                    <h4 className="font-semibold mb-5 text-foreground">Our responsibilities include:</h4>
-                    <div className="space-y-4">
+                  <div className="mb-8">
+                    <h4 className="font-semibold mb-4 text-foreground">Our responsibilities include:</h4>
+                    <div className="space-y-3">
                       {[
                         'Field installation and on-site technical work',
                         'Maintenance and fault response',
                         'Coordination between network, infrastructure, and customer environments',
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-muted-foreground leading-relaxed">{item}</span>
                         </div>
                       ))}
@@ -310,24 +243,22 @@ export default function Home() {
                   </p>
                 </div>
 
-                {/* Stats sidebar — spans 2 columns */}
-                <div className="md:col-span-2 bg-neutral-950 p-10 md:p-12 flex flex-col justify-between">
-                  <div className="space-y-6">
-                    <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.06]">
-                      <div className="text-4xl font-bold text-green-500 mb-2 tracking-tight">Zambia</div>
-                      <div className="text-sm text-neutral-400">Operating Region</div>
-                    </div>
-                    <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.06]">
-                      <div className="text-4xl font-bold text-green-500 mb-2 tracking-tight">24/7</div>
-                      <div className="text-sm text-neutral-400">Support Coverage</div>
-                    </div>
-                    <div className="p-6 rounded-2xl bg-white/[0.04] border border-white/[0.06]">
-                      <div className="text-4xl font-bold text-green-500 mb-2 tracking-tight">ISP</div>
-                      <div className="text-sm text-neutral-400">Partner Category</div>
-                    </div>
+                {/* Stats panel */}
+                <div className="bg-neutral-950 p-8 md:p-10 flex flex-col justify-between">
+                  <div className="space-y-4">
+                    {[
+                      { value: 'Zambia', label: 'Operating Region' },
+                      { value: '24/7', label: 'Support Coverage' },
+                      { value: 'ISP', label: 'Partner Category' },
+                    ].map((stat, idx) => (
+                      <div key={idx} className="p-5 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                        <div className="text-3xl font-bold text-green-500 mb-1 tracking-tight">{stat.value}</div>
+                        <div className="text-sm text-neutral-400">{stat.label}</div>
+                      </div>
+                    ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-8">
+                  <div className="flex flex-wrap gap-2 mt-6">
                     <span className="px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-medium border border-green-500/20">
                       IT Infrastructure
                     </span>
@@ -389,7 +320,7 @@ export default function Home() {
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start space-x-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-green-500" />
                       </div>
                       <div>
                         <h3 className="font-semibold mb-0.5 text-sm">{item.title}</h3>
@@ -441,7 +372,7 @@ export default function Home() {
                       WhatsApp us
                     </div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
+                  <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </a>
               </div>
 

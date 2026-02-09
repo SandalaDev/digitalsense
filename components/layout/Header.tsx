@@ -26,7 +26,6 @@ export function Header() {
     }, []);
 
     const navItems: NavItem[] = [
-        { label: 'Home', href: '/' },
         {
             label: 'Capabilities',
             href: '#capabilities',
@@ -51,7 +50,6 @@ export function Header() {
                 },
             ]
         },
-        { label: 'Work', href: '#featured-work' },
         { label: 'Contact', href: '#schedule-call' },
     ];
 
@@ -153,13 +151,13 @@ export function Header() {
                     {/* CTA */}
                     <div className="hidden lg:flex items-center">
                         <a
-                            href="#schedule-call"
+                            href="#request-quote"
                             className={`px-6 py-2.5 rounded-lg text-sm font-medium hover:scale-105 transition-all ${isScrolled
                                 ? 'glass text-foreground'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                                 }`}
                         >
-                            Schedule a Call
+                            Request a Quote
                         </a>
                     </div>
 
@@ -233,11 +231,11 @@ export function Header() {
                                 </div>
                             ))}
                             <a
-                                href="#schedule-call"
+                                href="#request-quote"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="block w-full text-center glass px-6 py-3 rounded-lg font-medium text-foreground mt-4"
                             >
-                                Schedule a Call
+                                Request a Quote
                             </a>
                         </nav>
                     </motion.div>
