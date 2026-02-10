@@ -136,7 +136,7 @@ export function HeroSlider() {
     };
 
     return (
-        <section className="relative h-screen overflow-hidden">
+        <section className="relative h-svh min-h-[600px] overflow-hidden">
             <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                     key={currentSlide}
@@ -166,23 +166,23 @@ export function HeroSlider() {
                     </div>
 
                     {/* Content */}
-                    <div className="container-custom relative h-full flex items-center py-32 md:py-40">
-                        <div className="max-w-4xl text-white space-y-8">
+                    <div className="container-custom relative h-full flex items-end pb-28 sm:items-center sm:pt-20 sm:pb-24">
+                        <div className="max-w-4xl text-white space-y-4 sm:space-y-5 lg:space-y-6 2xl:space-y-8">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
-                                className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-accent border border-green-500/30"
+                                className="inline-flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-accent border border-green-500/30"
                             >
                                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-sm font-semibold text-white">{slides[currentSlide].badge}</span>
+                                <span className="text-xs sm:text-sm font-semibold text-white">{slides[currentSlide].badge}</span>
                             </motion.div>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.3 }}
-                                className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none"
+                                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-[1.1]"
                             >
                                 {slides[currentSlide].title}
                                 <br />
@@ -193,7 +193,7 @@ export function HeroSlider() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="text-xl md:text-2xl text-white/80 max-w-2xl leading-relaxed"
+                                className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-white/80 max-w-2xl leading-relaxed"
                             >
                                 {slides[currentSlide].description}
                             </motion.p>
@@ -202,21 +202,21 @@ export function HeroSlider() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.5 }}
-                                className="flex flex-col sm:flex-row gap-6 pt-4"
+                                className="flex flex-col sm:flex-row gap-3 sm:gap-3 md:gap-4 pt-1 sm:pt-2"
                             >
                                 <a
                                     href={slides[currentSlide].primaryCTA.href}
-                                    className="group px-10 py-5 rounded-xl bg-green-500 text-black font-semibold hover:bg-green-400 transition-all shadow-lg hover:shadow-2xl inline-flex items-center justify-center space-x-3"
+                                    className="group px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-3.5 2xl:px-10 2xl:py-5 rounded-xl bg-green-500 text-black font-semibold hover:bg-green-400 transition-all shadow-lg hover:shadow-2xl inline-flex items-center justify-center space-x-2.5"
                                 >
-                                    <span>{slides[currentSlide].primaryCTA.label}</span>
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <span className="text-sm md:text-base">{slides[currentSlide].primaryCTA.label}</span>
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                                 </a>
                                 <a
                                     href={slides[currentSlide].secondaryCTA.href}
-                                    className="group px-10 py-5 rounded-xl glass-light border border-white/20 font-semibold text-white hover:bg-white/15 transition-all inline-flex items-center justify-center space-x-3"
+                                    className="group px-5 py-3 sm:px-6 sm:py-3 md:px-8 md:py-3.5 2xl:px-10 2xl:py-5 rounded-xl glass-light border border-white/20 font-semibold text-white hover:bg-white/15 transition-all inline-flex items-center justify-center space-x-2.5"
                                 >
-                                    <span>{slides[currentSlide].secondaryCTA.label}</span>
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    <span className="text-sm md:text-base">{slides[currentSlide].secondaryCTA.label}</span>
+                                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                                 </a>
                             </motion.div>
 
@@ -226,14 +226,14 @@ export function HeroSlider() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.6 }}
-                                    className="grid grid-cols-3 gap-8 max-w-2xl"
+                                    className="hidden sm:grid grid-cols-3 gap-4 md:gap-6 2xl:gap-8 max-w-2xl"
                                 >
                                     {slides[currentSlide].stats.map((stat, index) => (
-                                        <div key={index} className="border-l-2 border-accent/50 pl-4">
-                                            <div className="text-3xl md:text-4xl font-bold mb-1 text-accent">
+                                        <div key={index} className="border-l-2 border-accent/50 pl-3 md:pl-4">
+                                            <div className="text-xl md:text-2xl 2xl:text-4xl font-bold mb-1 text-accent">
                                                 {stat.value}
                                             </div>
-                                            <div className="text-sm text-white/70">{stat.label}</div>
+                                            <div className="text-xs md:text-sm text-white/70">{stat.label}</div>
                                         </div>
                                     ))}
                                 </motion.div>
@@ -244,11 +244,11 @@ export function HeroSlider() {
             </AnimatePresence>
 
             {/* Navigation Controls */}
-            <div className="absolute bottom-12 left-0 right-0 z-20">
+            <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-0 right-0 z-20">
                 <div className="container-custom">
                     <div className="flex items-center justify-between">
                         {/* Slide Indicators */}
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2 sm:space-x-3">
                             {slides.map((_, index) => (
                                 <button
                                     key={index}
@@ -257,7 +257,7 @@ export function HeroSlider() {
                                     aria-label={`Go to slide ${index + 1}`}
                                 >
                                     {/* Background bar */}
-                                    <div className="h-1 w-16 bg-white/30 rounded-full overflow-hidden">
+                                    <div className="h-1 w-8 sm:w-12 md:w-16 bg-white/30 rounded-full overflow-hidden">
                                         {/* Progress bar for current slide */}
                                         {index === currentSlide && (
                                             <motion.div
@@ -273,28 +273,39 @@ export function HeroSlider() {
                                         )}
                                     </div>
                                     {/* Label on hover */}
-                                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 rounded-lg glass border border-white/20 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 rounded-lg glass border border-white/20 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden sm:block">
                                         {slides[index].badge}
                                     </div>
                                 </button>
                             ))}
                         </div>
 
+                        {/* Scroll Indicator — centered between indicators and arrows */}
+                        <a href="#capabilities" className="hidden sm:block">
+                            <div className="w-6 h-9 rounded-full border-2 border-white/30 flex items-start justify-center p-1.5 hover:border-white/50 transition-colors">
+                                <motion.div
+                                    animate={{ y: [0, 10, 0] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                    className="w-1.5 h-1.5 rounded-full bg-white/50"
+                                />
+                            </div>
+                        </a>
+
                         {/* Arrow Controls */}
                         <div className="flex items-center space-x-2">
                             <button
                                 onClick={prevSlide}
-                                className="w-12 h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
+                                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
                                 aria-label="Previous slide"
                             >
-                                <ChevronLeft className="w-6 h-6" />
+                                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="w-12 h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
+                                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl glass-light border border-white/15 flex items-center justify-center text-white hover:bg-white/15 hover:scale-110 transition-all"
                                 aria-label="Next slide"
                             >
-                                <ChevronRight className="w-6 h-6" />
+                                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
                             </button>
                         </div>
                     </div>
@@ -313,24 +324,6 @@ export function HeroSlider() {
                     </div>
                 </div>
             </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-            >
-                <a href="#capabilities" className="block">
-                    <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2 hover:border-white/50 transition-colors">
-                        <motion.div
-                            animate={{ y: [0, 12, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                            className="w-1.5 h-1.5 rounded-full bg-white/50"
-                        />
-                    </div>
-                </a>
-            </motion.div>
         </section>
     );
 }
