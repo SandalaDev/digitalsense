@@ -26,6 +26,7 @@ export function Header() {
     }, []);
 
     const navItems: NavItem[] = [
+        { label: 'About', href: '/about' },
         {
             label: 'Capabilities',
             href: '#capabilities',
@@ -50,7 +51,7 @@ export function Header() {
                 },
             ]
         },
-        { label: 'Contact', href: '#schedule-call' },
+        { label: 'Contact', href: '/about#contact' },
     ];
 
     return (
@@ -97,6 +98,17 @@ export function Header() {
                                         <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
                                         <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
                                     </button>
+                                ) : item.href.startsWith('/') ? (
+                                    <Link
+                                        href={item.href}
+                                        className={`text-sm font-medium transition-colors relative group ${isScrolled
+                                            ? 'text-accent hover:text-accent/80'
+                                            : 'text-white hover:text-white/80'
+                                            }`}
+                                    >
+                                        {item.label}
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                    </Link>
                                 ) : (
                                     <a
                                         href={item.href}
@@ -150,15 +162,15 @@ export function Header() {
 
                     {/* CTA */}
                     <div className="hidden lg:flex items-center">
-                        <a
-                            href="#request-quote"
+                        <Link
+                            href="/about#contact"
                             className={`px-6 py-2.5 rounded-lg text-sm font-medium hover:scale-105 transition-all ${isScrolled
                                 ? 'glass text-foreground'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                                 }`}
                         >
                             Request a Quote
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -219,6 +231,14 @@ export function Header() {
                                                 )}
                                             </AnimatePresence>
                                         </div>
+                                    ) : item.href.startsWith('/') ? (
+                                        <Link
+                                            href={item.href}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="block text-base font-medium text-foreground/70 hover:text-foreground transition-colors py-2"
+                                        >
+                                            {item.label}
+                                        </Link>
                                     ) : (
                                         <a
                                             href={item.href}
@@ -230,13 +250,13 @@ export function Header() {
                                     )}
                                 </div>
                             ))}
-                            <a
-                                href="#request-quote"
+                            <Link
+                                href="/about#contact"
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="block w-full text-center glass px-6 py-3 rounded-lg font-medium text-foreground mt-4"
                             >
                                 Request a Quote
-                            </a>
+                            </Link>
                         </nav>
                     </motion.div>
                 )}

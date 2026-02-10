@@ -114,7 +114,18 @@ export const rfqSchema = z.object({
 
 export type RFQFormData = z.infer<typeof rfqSchema>;
 
-export const formTypes = ['contact', 'energy-quote', 'software-quote', 'it-assessment', 'rfq'] as const;
+export const generalEnquirySchema = z.object({
+  fullName: z.string().min(1, 'Full name is required'),
+  company: z.string().optional(),
+  email: z.string().email('Please enter a valid email address'),
+  phone: z.string().optional(),
+  enquiryType: z.string().min(1, 'Please select an enquiry type'),
+  message: z.string().min(1, 'Please describe how we can help'),
+});
+
+export type GeneralEnquiryFormData = z.infer<typeof generalEnquirySchema>;
+
+export const formTypes = ['contact', 'energy-quote', 'software-quote', 'it-assessment', 'rfq', 'general-enquiry'] as const;
 export type FormType = typeof formTypes[number];
 
 export const submissionSchema = z.object({
@@ -139,5 +150,7 @@ export function getSchemaForFormType(formType: FormType) {
       return itAssessmentSchema;
     case 'rfq':
       return rfqSchema;
+    case 'general-enquiry':
+      return generalEnquirySchema;
   }
 }

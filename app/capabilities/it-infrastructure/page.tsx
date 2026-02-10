@@ -873,8 +873,8 @@ export default function ITInfrastructurePage() {
                                         </div>
                                         <div>
                                             <div className="font-semibold mb-1">Email</div>
-                                            <a href="mailto:it@digitalsense.co.zm" className="text-green-500 hover:underline">
-                                                it@digitalsense.co.zm
+                                            <a href="mailto:info@digitalsense.tech" className="text-green-500 hover:underline">
+                                                info@digitalsense.tech
                                             </a>
                                         </div>
                                     </div>

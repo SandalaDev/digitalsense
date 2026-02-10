@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import type { FormType } from './schemas';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const recipient = process.env.FORM_RECIPIENT_EMAIL || 'info@digitalsense.co.zm';
+const recipient = process.env.FORM_RECIPIENT_EMAIL || 'info@digitalsense.tech';
 
 const formLabels: Record<FormType, string> = {
   'contact': 'Schedule a Call',
@@ -10,6 +10,7 @@ const formLabels: Record<FormType, string> = {
   'software-quote': 'Software Quote Request',
   'it-assessment': 'IT Assessment Request',
   'rfq': 'RFQ — Request for Quote',
+  'general-enquiry': 'General Enquiry',
 };
 
 function formatFieldName(key: string): string {
@@ -66,7 +67,7 @@ export async function sendFormEmail(
   const label = formLabels[formType];
   const { text, html } = buildEmailBody(formType, data);
   const senderName = (data.firstName as string) || 'Website';
-  const senderEmail = (data.email as string) || 'noreply@digitalsense.co.zm';
+  const senderEmail = (data.email as string) || 'noreply@digitalsense.tech';
 
   try {
     await resend.emails.send({

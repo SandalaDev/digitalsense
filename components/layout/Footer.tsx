@@ -91,15 +91,15 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
                                 <Mail className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="mailto:info@digitalsense.com" className="text-neutral-400 hover:text-accent transition-colors">
-                                    info@digitalsense.com
+                                <a href="mailto:info@digitalsense.tech" className="text-neutral-400 hover:text-accent transition-colors">
+                                    info@digitalsense.tech
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
                                 <MapPin className="w-5 h-5 text-accent mt-0.5" />
                                 <span className="text-neutral-400">
-                                    123 Tech Street<br />
-                                    San Francisco, CA 94105
+                                    Plot F3091/M #2, Foxdale Area<br />
+                                    Lusaka, 10101, Zambia
                                 </span>
                             </li>
                         </ul>
