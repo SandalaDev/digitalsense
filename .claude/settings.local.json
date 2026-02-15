@@ -4,7 +4,19 @@
       "Bash(netstat:*)",
       "Bash(findstr:*)",
       "Bash(bun run tsc:*)",
-      "Bash(bun --bun run next dev)"
+      "Bash(bun --bun run next dev)",
+      "Bash(bun add:*)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_press_key",
+      "WebFetch(domain:www.jenny.co.zm)",
+      "Bash(curl:*)",
+      "mcp__playwright__browser_click",
+      "Bash(git add:*)",
+      "mcp__playwright__browser_console_messages",
+      "Bash(docker compose:*)",
+      "Bash(cmd.exe /c \"start \"\"\"\" \"\"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\"\"\")"
     ]
   }
 }

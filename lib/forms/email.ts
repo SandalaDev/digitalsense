@@ -1,7 +1,11 @@
 import { Resend } from 'resend';
 import type { FormType } from './schemas';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend: Resend | null = null;
+function getResend() {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
+  return _resend;
+}
 const recipient = process.env.FORM_RECIPIENT_EMAIL || 'info@digitalsense.tech';
 
 const formLabels: Record<FormType, string> = {
@@ -70,7 +74,7 @@ export async function sendFormEmail(
   const senderEmail = (data.email as string) || 'noreply@digitalsense.tech';
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: `Digital Sense Forms <onboarding@resend.dev>`,
       to: recipient,
       replyTo: senderEmail,
