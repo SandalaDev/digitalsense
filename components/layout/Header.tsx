@@ -59,8 +59,8 @@ export function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                ? 'glass-light border-b border-white/10'
-                : 'bg-transparent'
+                ? 'header-scrolled'
+                : 'bg-transparent border-b border-transparent'
                 }`}
         >
             <div className="container-custom">
@@ -90,35 +90,35 @@ export function Header() {
                                 {item.children ? (
                                     <button
                                         className={`flex items-center space-x-1 text-sm font-medium transition-colors relative group ${isScrolled
-                                            ? 'text-accent hover:text-accent/80'
+                                            ? 'text-white hover:text-accent'
                                             : 'text-white hover:text-white/80'
                                             }`}
                                     >
                                         <span>{item.label}</span>
                                         <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} />
-                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white/70'}`} />
                                     </button>
                                 ) : item.href.startsWith('/') ? (
                                     <Link
                                         href={item.href}
                                         className={`text-sm font-medium transition-colors relative group ${isScrolled
-                                            ? 'text-accent hover:text-accent/80'
+                                            ? 'text-white hover:text-accent'
                                             : 'text-white hover:text-white/80'
                                             }`}
                                     >
                                         {item.label}
-                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white/70'}`} />
                                     </Link>
                                 ) : (
                                     <a
                                         href={item.href}
                                         className={`text-sm font-medium transition-colors relative group ${isScrolled
-                                            ? 'text-accent hover:text-accent/80'
+                                            ? 'text-white hover:text-accent'
                                             : 'text-white hover:text-white/80'
                                             }`}
                                     >
                                         {item.label}
-                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white'}`} />
+                                        <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? 'bg-accent' : 'bg-white/70'}`} />
                                     </a>
                                 )}
 
@@ -165,7 +165,7 @@ export function Header() {
                         <Link
                             href="/about#contact"
                             className={`px-6 py-2.5 rounded-lg text-sm font-medium hover:scale-105 transition-all ${isScrolled
-                                ? 'glass text-foreground'
+                                ? 'bg-white/10 border border-white/10 text-white hover:bg-white/15'
                                 : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20'
                                 }`}
                         >
@@ -177,7 +177,7 @@ export function Header() {
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className={`lg:hidden p-2 transition-colors ${isScrolled
-                            ? 'text-foreground hover:text-accent'
+                            ? 'text-white hover:text-accent'
                             : 'text-white hover:text-white/80'
                             }`}
                         aria-label="Toggle menu"
