@@ -23,7 +23,7 @@ import {
     Wifi
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
-import { ITAssessmentForm } from '@/components/forms/ITAssessmentForm';
+import { RFQForm } from '@/components/forms/rfq/RFQForm';
 
 export default function ITInfrastructurePage() {
     const [expandedService, setExpandedService] = useState<number | null>(null);
@@ -920,7 +920,7 @@ export default function ITInfrastructurePage() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                             >
-                                <ITAssessmentForm />
+                                <RFQForm presetService="it" />
                             </motion.div>
                         </div>
                     </div>

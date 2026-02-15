@@ -114,6 +114,21 @@ export const rfqSchema = z.object({
 
 export type RFQFormData = z.infer<typeof rfqSchema>;
 
+// Simplified schema for capabilities pages where service is pre-set
+export const rfqPresetSchema = z.object({
+  firstName: z.string().min(1, 'First name is required'),
+  lastName: z.string().min(1, 'Last name is required'),
+  email: z.string().email('Please enter a valid email address'),
+  phone: z.string().min(1, 'Phone number is required'),
+  company: z.string().optional(),
+  service: z.enum(['energy', 'it', 'software']),
+  description: z.string().min(1, 'Please describe your project').max(2000, 'Please keep your description under 2,000 characters'),
+  budgetRange: z.string().optional(),
+  referralSource: z.string().optional(),
+});
+
+export type RFQPresetFormData = z.infer<typeof rfqPresetSchema>;
+
 export const generalEnquirySchema = z.object({
   fullName: z.string().min(1, 'Full name is required'),
   company: z.string().optional(),

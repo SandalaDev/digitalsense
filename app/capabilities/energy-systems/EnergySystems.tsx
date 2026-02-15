@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
 import { EnergyCalculator, SystemConfigurations, EnergyFAQ } from '@/components/energy';
-import { EnergyQuoteForm } from '@/components/forms/EnergyQuoteForm';
+import { RFQForm } from '@/components/forms/rfq/RFQForm';
 
 const services = [
   {
@@ -713,7 +713,7 @@ export function EnergySystems() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <EnergyQuoteForm />
+                <RFQForm presetService="energy" />
               </motion.div>
             </div>
           </div>

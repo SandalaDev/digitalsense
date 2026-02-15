@@ -22,7 +22,7 @@ import {
   Users
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
-import { SoftwareQuoteForm } from '@/components/forms/SoftwareQuoteForm';
+import { RFQForm } from '@/components/forms/rfq/RFQForm';
 
 const services = [
   {
@@ -998,7 +998,7 @@ export function SoftwareSystems() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <SoftwareQuoteForm />
+                <RFQForm presetService="software" />
               </motion.div>
             </div>
           </div>

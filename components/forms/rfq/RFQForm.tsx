@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CheckCircle } from 'lucide-react';
-import { rfqSchema, type RFQFormData } from '@/lib/forms/schemas';
+import { rfqSchema, rfqPresetSchema, type RFQFormData, type RFQPresetFormData } from '@/lib/forms/schemas';
 import { useFormSubmit } from '@/hooks/useFormSubmit';
 import { RFQContactSection } from './RFQContactSection';
 import { RFQServiceSelector } from './RFQServiceSelector';
@@ -19,7 +19,27 @@ const serviceFields = {
   software: ['projectType', 'startingPoint', 'keyFeatures', 'projectTimeline'] as const,
 };
 
-export function RFQForm() {
+interface RFQFormProps {
+  presetService?: 'energy' | 'it' | 'software';
+}
+
+export function RFQForm({ presetService }: RFQFormProps = {}) {
+  const isPreset = !!presetService;
+
+  // Full form (home page)
+  const fullForm = useForm<RFQFormData>({
+    resolver: zodResolver(rfqSchema),
+    mode: 'onTouched',
+  });
+
+  // Preset form (capabilities pages)
+  const presetForm = useForm<RFQPresetFormData>({
+    resolver: zodResolver(rfqPresetSchema),
+    mode: 'onTouched',
+    defaultValues: presetService ? { service: presetService } : undefined,
+  });
+
+  const form = isPreset ? presetForm : fullForm;
   const {
     register,
     handleSubmit,
@@ -27,29 +47,26 @@ export function RFQForm() {
     watch,
     setValue,
     reset: resetForm,
-  } = useForm<RFQFormData>({
-    resolver: zodResolver(rfqSchema),
-    mode: 'onTouched',
-  });
+  } = form;
 
   const { submit, isSubmitting, isSuccess, error } = useFormSubmit('rfq');
 
-  const selectedService = watch('service');
+  // Full form: track service changes and clear stale fields
+  const selectedService = isPreset ? presetService : fullForm.watch('service');
   const prevServiceRef = useRef(selectedService);
 
-  // Clear stale fields when service changes
   useEffect(() => {
+    if (isPreset) return;
     const prev = prevServiceRef.current;
     if (prev && prev !== selectedService) {
       for (const field of serviceFields[prev]) {
-        setValue(field as keyof RFQFormData, undefined as never);
+        fullForm.setValue(field as keyof RFQFormData, undefined as never);
       }
     }
     prevServiceRef.current = selectedService;
-  }, [selectedService, setValue]);
+  }, [selectedService, isPreset, fullForm]);
 
-  const onSubmit = async (data: RFQFormData) => {
-    // Strip undefined values before sending
+  const onSubmit = async (data: RFQFormData | RFQPresetFormData) => {
     const cleaned = Object.fromEntries(
       Object.entries(data).filter(([, v]) => v !== undefined && v !== '')
     );
@@ -73,18 +90,39 @@ export function RFQForm() {
     );
   }
 
-  const sectionProps = { register, errors, watch, setValue };
+  // Use type assertions to bridge the two form types for shared sub-components
+  // Both schemas share the same contact fields, so this is safe
+  const registerAny = register as UseFormRegisterAny;
+  const errorsAny = errors as FieldErrorsAny;
+  const watchAny = watch as UseFormWatchAny;
+  const setValueAny = setValue as UseFormSetValueAny;
 
   return (
     <div className="glass rounded-2xl p-6 md:p-10">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 pb-24 md:pb-0">
-        <RFQContactSection register={register} errors={errors} />
+      <form onSubmit={handleSubmit(onSubmit as Parameters<typeof handleSubmit>[0])} className="space-y-8 pb-24 md:pb-0">
+        <RFQContactSection register={registerAny} errors={errorsAny} />
 
-        <RFQServiceSelector watch={watch} setValue={setValue} errors={errors} />
+        {!isPreset && (
+          <>
+            <RFQServiceSelector watch={watchAny} setValue={setValueAny} errors={errorsAny} />
+            <RFQConditionalFields
+              register={registerAny}
+              errors={errorsAny}
+              watch={watchAny}
+              setValue={setValueAny}
+              selectedService={selectedService}
+            />
+          </>
+        )}
 
-        <RFQConditionalFields {...sectionProps} selectedService={selectedService} />
-
-        {selectedService && <RFQProjectDetails register={register} errors={errors} watch={watch} />}
+        {(isPreset || selectedService) && (
+          <RFQProjectDetails
+            register={registerAny}
+            errors={errorsAny}
+            watch={watchAny}
+            {...(isPreset ? { minLength: 1, maxLength: 2000 } : {})}
+          />
+        )}
 
         {error && (
           <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-sm text-red-600">
@@ -92,8 +130,18 @@ export function RFQForm() {
           </div>
         )}
 
-        <RFQSubmitButton isSubmitting={isSubmitting} hasService={!!selectedService} />
+        <RFQSubmitButton isSubmitting={isSubmitting} hasService={isPreset || !!selectedService} />
       </form>
     </div>
   );
 }
+
+// Internal type aliases for bridging form types in shared sub-components
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UseFormRegisterAny = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type FieldErrorsAny = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UseFormWatchAny = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type UseFormSetValueAny = any;

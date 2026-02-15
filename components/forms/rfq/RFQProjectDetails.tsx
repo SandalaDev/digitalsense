@@ -1,11 +1,39 @@
 'use client';
 
 import { Textarea } from '@/components/ui/textarea';
-import type { RFQSectionProps } from './types';
+import type { UseFormRegister, FieldErrors, UseFormWatch } from 'react-hook-form';
 
-export function RFQProjectDetails({ register, errors, watch }: Pick<RFQSectionProps, 'register' | 'errors' | 'watch'>) {
+interface RFQProjectDetailsProps {
+  register: UseFormRegister<{ description: string; budgetRange?: string; referralSource?: string; [key: string]: unknown }>;
+  errors: FieldErrors<{ description: string; budgetRange?: string; referralSource?: string }>;
+  watch: UseFormWatch<{ description: string; [key: string]: unknown }>;
+  minLength?: number;
+  maxLength?: number;
+}
+
+export function RFQProjectDetails({ register, errors, watch, minLength = 50, maxLength }: RFQProjectDetailsProps) {
   const description = watch('description') || '';
   const charCount = description.length;
+
+  const isOverMax = maxLength != null && charCount > maxLength;
+  const isNearMax = maxLength != null && charCount > maxLength * 0.9;
+  const meetsMin = charCount >= minLength;
+
+  const counterColor = isOverMax
+    ? 'text-red-500'
+    : isNearMax
+      ? 'text-amber-500'
+      : meetsMin
+        ? 'text-green-500'
+        : 'text-muted-foreground';
+
+  const counterLabel = maxLength != null
+    ? `${charCount}/${maxLength}`
+    : `${charCount}/${minLength}`;
+
+  const placeholder = maxLength != null
+    ? 'Describe your project, goals, and any specific requirements...'
+    : `Describe your project, goals, and any specific requirements (min. ${minLength} characters)...`;
 
   return (
     <div className="space-y-4">
@@ -20,7 +48,7 @@ export function RFQProjectDetails({ register, errors, watch }: Pick<RFQSectionPr
         <Textarea
           id="rfq-description"
           rows={4}
-          placeholder="Describe your project, goals, and any specific requirements (min. 50 characters)..."
+          placeholder={placeholder}
           {...register('description')}
         />
         <div className="flex items-center justify-between mt-1">
@@ -29,8 +57,8 @@ export function RFQProjectDetails({ register, errors, watch }: Pick<RFQSectionPr
           ) : (
             <span />
           )}
-          <span className={`text-xs ${charCount >= 50 ? 'text-green-500' : 'text-muted-foreground'}`}>
-            {charCount}/50
+          <span className={`text-xs ${counterColor}`}>
+            {counterLabel}
           </span>
         </div>
       </div>
