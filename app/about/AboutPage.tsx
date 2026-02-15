@@ -16,7 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { AnimatedSection } from '@/components/home/AnimatedSection';
-import { GeneralEnquiryForm } from '@/components/forms/GeneralEnquiryForm';
+import { RFQForm } from '@/components/forms/rfq';
 
 export default function AboutPage() {
   return (
@@ -436,15 +436,9 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Right Column — Contact Form (3 cols) */}
+              {/* Right Column — Quote Form (3 cols) */}
               <div className="lg:col-span-3">
-                <div className="glass rounded-2xl p-6 md:p-8">
-                  <h3 className="text-lg font-bold mb-1">Request a consultation</h3>
-                  <p className="text-sm text-muted-foreground mb-6">
-                    Use the form below to start a structured discussion.
-                  </p>
-                  <GeneralEnquiryForm />
-                </div>
+                <RFQForm />
               </div>
             </motion.div>
           </div>
