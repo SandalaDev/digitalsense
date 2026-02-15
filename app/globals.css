@@ -489,6 +489,15 @@ html {
   box-shadow: var(--glass-light-hover-shadow);
 }
 
+/* Scrolled header glass */
+.header-scrolled {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
 /* Container system */
 .container-custom {
   width: 100%;

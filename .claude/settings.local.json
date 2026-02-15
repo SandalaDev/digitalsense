@@ -16,7 +16,10 @@
       "Bash(git add:*)",
       "mcp__playwright__browser_console_messages",
       "Bash(docker compose:*)",
-      "Bash(cmd.exe /c \"start \"\"\"\" \"\"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\"\"\")"
+      "Bash(cmd.exe /c \"start \"\"\"\" \"\"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\"\"\")",
+      "Bash(bun run lint:*)",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_wait_for"
     ]
   }
 }
