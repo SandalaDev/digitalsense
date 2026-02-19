@@ -666,8 +666,8 @@ export function EnergySystems() {
                     </div>
                     <div>
                       <div className="font-semibold mb-1">Email</div>
-                      <a href="mailto:info@digitalsense.tech" className="text-energy hover:underline">
-                        info@digitalsense.tech
+                      <a href="mailto:connect@digitalsense.tech" className="text-energy hover:underline">
+                        connect@digitalsense.tech
                       </a>
                     </div>
                   </div>

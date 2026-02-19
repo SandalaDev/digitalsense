@@ -6,7 +6,7 @@ function getResend() {
   if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
   return _resend;
 }
-const recipient = process.env.FORM_RECIPIENT_EMAIL || 'info@digitalsense.tech';
+const recipient = process.env.FORM_RECIPIENT_EMAIL || 'connect@digitalsense.tech';
 
 const formLabels: Record<FormType, string> = {
   'contact': 'Schedule a Call',

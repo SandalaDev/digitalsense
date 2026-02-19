@@ -58,29 +58,24 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Solutions */}
+                    {/* Quick Links */}
                     <div>
-                        <h3 className="font-semibold text-lg mb-6">Solutions</h3>
+                        <h3 className="font-semibold text-lg mb-6">Quick Links</h3>
                         <ul className="space-y-3">
                             <li>
-                                <a href="#commercial" className="text-neutral-400 hover:text-accent transition-colors">
-                                    Commercial Infrastructure
-                                </a>
+                                <Link href="/capabilities/it-infrastructure#pricing" className="text-neutral-400 hover:text-accent transition-colors">
+                                    IT Outsourcing Pricing
+                                </Link>
                             </li>
                             <li>
-                                <a href="#industrial" className="text-neutral-400 hover:text-accent transition-colors">
-                                    Industrial Operations
-                                </a>
+                                <Link href="/capabilities/energy-systems#pricing" className="text-neutral-400 hover:text-accent transition-colors">
+                                    Unitised Power System Pricing
+                                </Link>
                             </li>
                             <li>
-                                <a href="#sustainable" className="text-neutral-400 hover:text-accent transition-colors">
-                                    Sustainable Power
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#digital" className="text-neutral-400 hover:text-accent transition-colors">
-                                    Digital Transformation
-                                </a>
+                                <Link href="/capabilities/energy-systems#calculator" className="text-neutral-400 hover:text-accent transition-colors">
+                                    Power System Calculator
+                                </Link>
                             </li>
                         </ul>
                     </div>
@@ -91,8 +86,8 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
                                 <Mail className="w-5 h-5 text-accent mt-0.5" />
-                                <a href="mailto:info@digitalsense.tech" className="text-neutral-400 hover:text-accent transition-colors">
-                                    info@digitalsense.tech
+                                <a href="mailto:connect@digitalsense.tech" className="text-neutral-400 hover:text-accent transition-colors">
+                                    connect@digitalsense.tech
                                 </a>
                             </li>
                             <li className="flex items-start space-x-3">
@@ -108,19 +103,9 @@ export function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="pt-8 border-t border-white/10">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <p className="text-neutral-400 text-sm">
-                            © {currentYear} Digital Sense. All rights reserved.
-                        </p>
-                        <div className="flex space-x-6">
-                            <Link href="/privacy" className="text-neutral-400 hover:text-accent transition-colors text-sm">
-                                Privacy Policy
-                            </Link>
-                            <Link href="/terms" className="text-neutral-400 hover:text-accent transition-colors text-sm">
-                                Terms of Service
-                            </Link>
-                        </div>
-                    </div>
+                    <p className="text-neutral-400 text-sm text-center md:text-left">
+                        © {currentYear} Digital Sense. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>

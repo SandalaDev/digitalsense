@@ -951,8 +951,8 @@ export function SoftwareSystems() {
                     </div>
                     <div>
                       <div className="font-semibold mb-1">Email</div>
-                      <a href="mailto:info@digitalsense.tech" className="text-green-500 hover:underline">
-                        info@digitalsense.tech
+                      <a href="mailto:connect@digitalsense.tech" className="text-green-500 hover:underline">
+                        connect@digitalsense.tech
                       </a>
                     </div>
                   </div>

@@ -398,8 +398,8 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-sm mb-1">General Enquiries</h4>
-                      <a href="mailto:info@digitalsense.tech" className="text-sm text-foreground hover:text-green-500 transition-colors">
-                        info@digitalsense.tech
+                      <a href="mailto:connect@digitalsense.tech" className="text-sm text-foreground hover:text-green-500 transition-colors">
+                        connect@digitalsense.tech
                       </a>
                     </div>
                   </div>

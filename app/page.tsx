@@ -355,7 +355,7 @@ export default function Home() {
 
                 {/* Contact info */}
                 <div className="text-sm text-muted-foreground space-y-1 mb-8">
-                  <p>Email: <a href="mailto:info@digitalsense.tech" className="text-foreground hover:text-green-500 transition-colors">info@digitalsense.tech</a></p>
+                  <p>Email: <a href="mailto:connect@digitalsense.tech" className="text-foreground hover:text-green-500 transition-colors">connect@digitalsense.tech</a></p>
                   <p>Mon&ndash;Fri, 8:00 AM &ndash; 5:00 PM CAT</p>
                 </div>
 

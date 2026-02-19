@@ -1060,8 +1060,8 @@ export default function ITInfrastructurePage() {
                                     <Phone className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                                     <div>
                                         <div className="text-sm font-medium text-white">Prefer to talk?</div>
-                                        <a href="mailto:info@digitalsense.tech" className="text-green-400 hover:underline text-sm">
-                                            info@digitalsense.tech
+                                        <a href="mailto:connect@digitalsense.tech" className="text-green-400 hover:underline text-sm">
+                                            connect@digitalsense.tech
                                         </a>
                                     </div>
                                 </div>

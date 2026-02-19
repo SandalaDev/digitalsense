@@ -5,5 +5,5 @@ services:
       - "3000:3000"
     environment:
       - RESEND_API_KEY=${RESEND_API_KEY}
-      - FORM_RECIPIENT_EMAIL=${FORM_RECIPIENT_EMAIL:-info@digitalsense.tech}
+      - FORM_RECIPIENT_EMAIL=${FORM_RECIPIENT_EMAIL:-connect@digitalsense.tech}
     restart: unless-stopped
