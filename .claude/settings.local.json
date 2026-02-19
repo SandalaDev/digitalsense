@@ -19,7 +19,13 @@
       "Bash(cmd.exe /c \"start \"\"\"\" \"\"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\"\"\")",
       "Bash(bun run lint:*)",
       "mcp__playwright__browser_evaluate",
-      "mcp__playwright__browser_wait_for"
+      "mcp__playwright__browser_wait_for",
+      "WebFetch(domain:ipdimension.co.za)",
+      "WebFetch(domain:exmiletechnologies.com)",
+      "WebSearch",
+      "Bash(export PATH=\"$HOME/.bun/bin:$PATH\")",
+      "Bash(export PATH=\"$HOME/.bun/bin:/usr/bin:/usr/local/bin:$PATH\")",
+      "Bash(lsof:*)"
     ]
   }
 }
