@@ -21,6 +21,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Digital Sense - Integrated Systems",
   description: "Delivering integrated energy, IT, and software solutions that transform operations and reduce risk.",
+  icons: {
+    icon: '/logo/favicon.svg',
+  },
 };
 
 export default function RootLayout({

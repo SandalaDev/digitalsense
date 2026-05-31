@@ -14,7 +14,7 @@ export function Footer() {
                     <div>
                         <div className="relative w-48 h-12 mb-6">
                             <Image
-                                src="/logo/greenwhite horizontal.svg"
+                                src="/logo/logo.svg"
                                 alt="Digital Sense"
                                 fill
                                 className="object-contain object-left"
