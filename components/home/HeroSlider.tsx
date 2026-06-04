@@ -37,7 +37,7 @@ export function HeroSlider() {
             title: 'Power Systems That',
             titleHighlight: 'Never Fail',
             description: 'Design, integrate, and maintain reliable electrical infrastructure. From renewable energy integration to mission-critical backup systems, we deliver power solutions that keep your operations running.',
-            backgroundImage: 'https://images.unsplash.com/photo-1652849962548-44d46f88d3a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+            backgroundImage: '/images/electrical.png',
             primaryCTA: {
                 label: 'Energy Solutions',
                 href: '#energy-systems',
@@ -58,7 +58,7 @@ export function HeroSlider() {
             title: 'Networks Built for',
             titleHighlight: 'Scale & Security',
             description: 'Enterprise-grade IT infrastructure that connects, protects, and performs. From data centers to distributed networks, we architect systems that grow with your business.',
-            backgroundImage: 'https://images.unsplash.com/photo-1744868562210-fffb7fa882d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+            backgroundImage: '/images/infra.png',
             primaryCTA: {
                 label: 'IT Infrastructure',
                 href: '#it-systems',
@@ -79,7 +79,7 @@ export function HeroSlider() {
             title: 'Software That',
             titleHighlight: 'Transforms Operations',
             description: 'Custom software solutions that automate, optimize, and integrate. From IoT platforms to AI-driven analytics, we build intelligent systems that deliver measurable business value.',
-            backgroundImage: 'https://images.unsplash.com/photo-1658274474930-bb27a64022c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+            backgroundImage: '/images/swe.png',
             primaryCTA: {
                 label: 'Software Solutions',
                 href: '#software-systems',
@@ -111,11 +111,11 @@ export function HeroSlider() {
         setCurrentSlide(index);
     };
 
-    // Auto-advance slides every 7 seconds
+    // Auto-advance slides every 14 seconds
     useEffect(() => {
         const timer = setInterval(() => {
             nextSlide();
-        }, 7000);
+        }, 14000);
 
         return () => clearInterval(timer);
     }, [currentSlide]);
@@ -264,7 +264,7 @@ export function HeroSlider() {
                                                 className="h-full bg-accent"
                                                 initial={{ width: '0%' }}
                                                 animate={{ width: '100%' }}
-                                                transition={{ duration: 7, ease: 'linear' }}
+                                                transition={{ duration: 14, ease: 'linear' }}
                                             />
                                         )}
                                         {/* Full bar for completed slides */}

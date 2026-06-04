@@ -1,13 +1,13 @@
 'use client';
 
 const logos = [
-  { name: 'Jenny Internet', src: '/icons/companies/jenny.svg' },
-  { name: 'Elsewedy Electric', src: '/icons/companies/elsewedy.svg' },
-  { name: 'Exmile Solutions', src: '/icons/companies/exmile.svg' },
-  { name: 'Mkango Resources', src: '/icons/companies/mkango.svg' },
-  { name: 'Sarovar Hotels', src: '/icons/companies/sarovar.svg' },
-  { name: 'SFQ', src: '/icons/companies/sfq.svg' },
-  { name: 'Botswana Government', src: '/icons/companies/bw.svg' },
+  { name: 'Jenny Internet', src: '/icons/companies/jenny.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Elsewedy Electric', src: '/icons/companies/elsewedy.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Exmile Solutions', src: '/icons/companies/exmile.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Mkango Resources', src: '/icons/companies/mkango.svg', className: 'h-16 md:h-20 w-auto' },
+  { name: 'Sarovar Hotels', src: '/icons/companies/sarovar.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'SFQ', src: '/icons/companies/sfq.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Botswana Government', src: '/icons/companies/bw.svg', className: 'h-10 md:h-12 w-auto' },
 ];
 
 export function LogoScroller() {
@@ -48,7 +48,7 @@ export function LogoScroller() {
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-10 md:h-12 w-auto object-contain select-none"
+                    className={`${logo.className} object-contain select-none`}
                     draggable={false}
                     loading="eager"
                   />
