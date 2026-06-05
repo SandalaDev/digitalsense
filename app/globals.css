@@ -701,5 +701,10 @@ html {
 }
 
 .animate-logo-scroll {
-  animation: logoScroll 30s linear infinite;
+  animation: logoScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.animate-logo-scroll:hover {
+  animation-play-state: paused;
 }

@@ -69,7 +69,7 @@ export function Header() {
                     <Link href="/" className="flex items-center group">
                         <div className={`relative transition-all duration-300 ${isScrolled ? 'w-10 h-10' : 'w-60 h-[72px]'}`}>
                             <Image
-                                src={isScrolled ? '/logo/headerTX.svg' : '/logo/green white.svg'}
+                                src={isScrolled ? '/logo/favicon.svg' : '/logo/logo.svg'}
                                 alt="Digital Sense"
                                 fill
                                 className="object-contain"

@@ -1,52 +1,59 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMicrosoft,
-  faGoogle,
-  faAws,
-  faLinux,
-  faUbuntu,
-  faDigitalOcean,
-  faCloudflare,
-  faWindows,
-} from '@fortawesome/free-brands-svg-icons';
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-
-const logos: { name: string; icon: IconDefinition }[] = [
-  { name: 'Microsoft', icon: faMicrosoft },
-  { name: 'Google Cloud', icon: faGoogle },
-  { name: 'AWS', icon: faAws },
-  { name: 'Linux', icon: faLinux },
-  { name: 'Ubuntu', icon: faUbuntu },
-  { name: 'DigitalOcean', icon: faDigitalOcean },
-  { name: 'Cloudflare', icon: faCloudflare },
-  { name: 'Windows', icon: faWindows },
+const logos = [
+  { name: 'Jenny Internet', src: '/icons/companies/jenny.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Elsewedy Electric', src: '/icons/companies/elsewedy.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Exmile Solutions', src: '/icons/companies/exmile.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Mkango Resources', src: '/icons/companies/mkango.svg', className: 'h-16 md:h-20 w-auto' },
+  { name: 'Sarovar Hotels', src: '/icons/companies/sarovar.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'SFQ', src: '/icons/companies/sfq.svg', className: 'h-10 md:h-12 w-auto' },
+  { name: 'Botswana Government', src: '/icons/companies/bw.svg', className: 'h-10 md:h-12 w-auto' },
 ];
 
 export function LogoScroller() {
   return (
     <section className="py-16 bg-white overflow-hidden shadow-[0_4px_24px_-4px_rgba(0,0,0,0.08)] relative z-10">
       <div className="container-custom mb-10">
-        <h2 className="text-center text-2xl md:text-3xl font-bold">
-          Chosen by teams who take <span className="text-gradient-energy">reliability</span> seriously
+        <h2 className="text-center text-sm md:text-base font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+          Trusted by teams who take{' '}
+          <span className="text-gradient-energy font-bold">reliability</span>{' '}
+          seriously
         </h2>
       </div>
 
       <div className="relative">
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-        {/* Scrolling track */}
-        <div className="flex items-center animate-logo-scroll">
-          {[...logos, ...logos].map((logo, index) => (
+        {/*
+          Marquee track — two identical sets of logos side-by-side.
+          The parent has `w-max` so its width = 2 × one set.
+          translateX(-50%) scrolls exactly one set, and the jump
+          back to 0% is invisible because set 2 is the same as set 1.
+        */}
+        <div className="flex w-max animate-logo-scroll">
+          {[0, 1].map((setIndex) => (
             <div
-              key={`${logo.name}-${index}`}
-              className="flex-shrink-0 mx-12 flex items-center space-x-3 opacity-30 hover:opacity-70 transition-opacity duration-300"
+              key={setIndex}
+              className="flex items-center shrink-0"
+              aria-hidden={setIndex === 1 ? 'true' : undefined}
             >
-              <FontAwesomeIcon icon={logo.icon} className="h-8 w-8 text-neutral-800" />
-              <span className="text-lg font-semibold text-neutral-800 whitespace-nowrap">{logo.name}</span>
+              {logos.map((logo) => (
+                <div
+                  key={`${logo.name}-${setIndex}`}
+                  className="flex-shrink-0 mx-8 md:mx-14 flex items-center justify-center opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className={`${logo.className} object-contain select-none`}
+                    draggable={false}
+                    loading="eager"
+                  />
+                </div>
+              ))}
             </div>
           ))}
         </div>
