@@ -1,60 +1,83 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { HeroSlider } from '@/components/home/HeroSlider';
 import { LogoScroller } from '@/components/home/LogoScroller';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBolt,
-  faNetworkWired,
-  faCode,
-  faArrowRight,
-  faCircleCheck,
-  faChevronDown,
-} from '@fortawesome/free-solid-svg-icons';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
 import { RFQForm } from '@/components/forms/rfq';
+import {
+  Sun,
+  Network,
+  Code2,
+  ArrowRight,
+  CheckCircle
+} from 'lucide-react';
 
 export default function Home() {
-  const [expandedCapability, setExpandedCapability] = useState<number | null>(null);
-
   const capabilities = [
     {
-      icon: faBolt,
-      title: 'Energy & Electrical Systems',
-      description: 'Design, integrate, and maintain power systems that ensure reliable, efficient, and sustainable energy delivery.',
-      details: [
-        'Solar & renewable energy integration',
-        'Power distribution & backup systems',
-        'Energy monitoring & optimization',
-        'Compliance with NEC & local codes',
+      icon: Sun,
+      title: 'Solar Energy',
+      description: 'Design, install, and maintain commercial solar systems engineered for reliable power, lower operating costs, and long-term energy resilience.',
+      highlights: [
+        {
+          title: '2.5+ MW Installed Capacity',
+          description: 'Commercial-scale solar experience across real-world environments.',
+        },
+        {
+          title: 'Hybrid Power Systems',
+          description: 'Solar, battery storage, inverter, and backup systems designed as one integrated solution.',
+        },
+        {
+          title: 'Lifecycle Support',
+          description: 'From system design and installation to maintenance, monitoring, and optimization.',
+        },
       ],
       image: 'https://images.unsplash.com/photo-1545209575-704d1434f9cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      href: '/capabilities/energy-systems',
     },
     {
-      icon: faNetworkWired,
-      title: 'IT & Infrastructure Systems',
-      description: 'Build robust network and infrastructure systems that enable seamless connectivity and data flow.',
-      details: [
-        'Network design & implementation',
-        'Data center infrastructure',
-        'Cybersecurity frameworks',
-        'Cloud & hybrid solutions',
+      icon: Network,
+      title: 'Enterprise IT Infrastructure',
+      description: 'Build the secure, connected, and resilient technology backbone your organization needs to operate without disruption.',
+      highlights: [
+        {
+          title: '5-Nines Uptime Commitment',
+          description: 'Infrastructure designed around availability, redundancy, and operational continuity.',
+        },
+        {
+          title: 'Secure Network Architecture',
+          description: 'Structured cabling, routing, switching, firewalls, access control, and segmentation.',
+        },
+        {
+          title: 'End-to-End Deployment',
+          description: 'Planning, installation, configuration, documentation, monitoring, and support.',
+        },
       ],
       image: 'https://images.unsplash.com/flagged/photo-1579274216947-86eaa4b00475?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      href: '/capabilities/it-infrastructure',
     },
     {
-      icon: faCode,
-      title: 'Software & Intelligent Systems',
-      description: 'Develop intelligent software solutions that automate, optimize, and transform your operations.',
-      details: [
-        'Custom software development',
-        'IoT & automation platforms',
-        'AI & machine learning integration',
-        'System integration & APIs',
+      icon: Code2,
+      title: 'Web Development',
+      description: 'Create fast, secure, custom web platforms that give your business full control over content, workflows, integrations, and digital growth.',
+      highlights: [
+        {
+          title: 'Sub-2s Page Loads',
+          description: 'Performance-focused websites built for speed, conversion, and user experience.',
+        },
+        {
+          title: 'Security-First Engineering',
+          description: 'Modern authentication, hardened deployment patterns, and safe data handling.',
+        },
+        {
+          title: 'Unlimited Customisation & Integration',
+          description: 'Built beyond templates, page builders, and WordPress limitations.',
+        },
       ],
       image: 'https://images.unsplash.com/photo-1694702740570-0a31ee1525c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      href: '/capabilities/software-development',
     },
   ];
 
@@ -66,9 +89,12 @@ export default function Home() {
       {/* Logo Scroller — Social Proof */}
       <LogoScroller />
 
-      {/* Capabilities Section - Expandable */}
-      <section id="capabilities" className="py-32 bg-background">
-        <div className="container-custom">
+      {/* Capabilities Section - 3 Horizontal Cards */}
+      <section id="capabilities" className="py-28 md:py-36 bg-background relative overflow-hidden">
+        {/* Subtle dot grid overlay for technical feel */}
+        <div className="absolute inset-0 bg-dot-grid opacity-10 pointer-events-none" />
+
+        <div className="container-custom relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,89 +102,88 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
               Our <span className="text-gradient-energy">Capabilities</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Technical excellence across energy, infrastructure, and intelligent systems
+              Mission-critical systems across energy, enterprise infrastructure, and the web.
             </p>
           </motion.div>
 
-          <div className="space-y-4 max-w-5xl mx-auto">
+          <div className="space-y-12 max-w-6xl mx-auto">
             {capabilities.map((capability, index) => {
-              const isExpanded = expandedCapability === index;
+              const Icon = capability.icon;
+              const isEven = index % 2 === 0;
 
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="glass rounded-2xl overflow-hidden"
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`group flex flex-col md:flex-row ${
+                    isEven ? '' : 'md:flex-row-reverse'
+                  } rounded-3xl overflow-hidden border border-neutral-200 dark:border-white/10 hover:border-green-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/5 glass`}
                 >
-                  <button
-                    onClick={() => setExpandedCapability(isExpanded ? null : index)}
-                    className="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                  >
-                    <div className="flex items-center space-x-6">
-                      <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                        <FontAwesomeIcon icon={capability.icon} className="w-8 h-8 text-black" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold mb-2">{capability.title}</h3>
-                        <p className="text-muted-foreground">{capability.description}</p>
-                      </div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <FontAwesomeIcon icon={faChevronDown} className="w-6 h-6 text-muted-foreground" />
-                    </motion.div>
-                  </button>
+                  {/* Image Side */}
+                  <div className="relative w-full md:w-5/12 h-64 md:h-auto min-h-[320px] overflow-hidden">
+                    <ImageWithFallback
+                      src={capability.image}
+                      alt={capability.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t md:bg-gradient-to-${isEven ? 'r' : 'l'} from-black/70 via-black/30 to-transparent`} />
+                  </div>
 
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: isExpanded ? 'auto' : 0,
-                      opacity: isExpanded ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="p-8 pt-0 grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="font-semibold mb-4 text-accent">What This System Controls</h4>
-                        <ul className="space-y-3">
-                          {capability.details.map((detail, idx) => (
-                            <li key={idx} className="flex items-start space-x-3">
-                              <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-success-500 mt-0.5 flex-shrink-0" />
-                              <span className="text-muted-foreground">{detail}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="mt-6">
-                          <a
-                            href={`#${capability.title.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="inline-flex items-center space-x-2 text-accent font-medium hover:gap-3 transition-all"
-                          >
-                            <span>Learn More</span>
-                            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-                          </a>
-                        </div>
+                  {/* Content Side */}
+                  <div className="p-8 md:p-12 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Icon Badge */}
+                      <div className="w-14 h-14 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:border-green-500 transition-all duration-300">
+                        <Icon className="w-7 h-7 text-green-600 group-hover:text-black transition-colors duration-300" />
                       </div>
-                      <div className="relative h-64 rounded-xl overflow-hidden">
-                        <ImageWithFallback
-                          src={capability.image}
-                          alt={capability.title}
-                          fill
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+                      {/* Title */}
+                      <h3 className="text-3xl font-bold mb-4 tracking-tight group-hover:text-green-500 transition-colors duration-300">
+                        {capability.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground text-base leading-relaxed mb-8">
+                        {capability.description}
+                      </p>
+
+                      {/* Highlights */}
+                      <div className="grid sm:grid-cols-1 gap-5 mb-8">
+                        {capability.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-start space-x-3">
+                            <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                            <div>
+                              <h4 className="font-semibold text-foreground text-sm leading-snug">
+                                {highlight.title}
+                              </h4>
+                              <p className="text-xs text-muted-foreground leading-normal mt-0.5">
+                                {highlight.description}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  </motion.div>
+
+                    {/* CTA Link */}
+                    <div>
+                      <Link
+                        href={capability.href}
+                        className="group/link inline-flex items-center space-x-2.5 text-green-600 font-bold hover:text-green-500 hover:gap-3 transition-all duration-300"
+                      >
+                        <span>Explore Capability</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
                 </motion.div>
               );
             })}
@@ -167,7 +192,7 @@ export default function Home() {
       </section>
 
       {/* Featured Work — Jenny Internet Zambia */}
-      <section id="featured-work" className="py-32 section-gray relative overflow-hidden">
+      <section id="featured-work" className="py-28 md:py-36 section-gray relative overflow-hidden">
         {/* Subtle diagonal texture */}
         <div className="absolute inset-0 bg-circuit opacity-40 pointer-events-none" />
 
@@ -179,7 +204,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
               Featured <span className="text-gradient-energy">Work</span>
             </h2>
           </motion.div>
@@ -191,16 +216,16 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="rounded-3xl overflow-hidden border border-neutral-200/80 hover:border-green-500/20 transition-all duration-500 hover:shadow-2xl bg-white">
+            <div className="rounded-3xl overflow-hidden border border-neutral-200 hover:border-green-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/5 glass">
               {/* Image banner */}
-              <div className="relative h-56 md:h-72 overflow-hidden">
+              <div className="relative h-64 md:h-80 overflow-hidden">
                 <ImageWithFallback
                   src="/jenny-internet.jpg"
                   alt="Jenny Internet Zambia - Connecting Africa to Information"
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
                 {/* Badge + Title overlaid on image */}
                 <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
@@ -231,7 +256,7 @@ export default function Home() {
                         'Coordination between network, infrastructure, and customer environments',
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-start space-x-3">
-                          <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-muted-foreground leading-relaxed">{item}</span>
                         </div>
                       ))}
@@ -274,7 +299,7 @@ export default function Home() {
       </section>
 
       {/* Request a Quote */}
-      <section id="request-quote" className="py-32 bg-background relative overflow-hidden">
+      <section id="request-quote" className="py-28 md:py-36 bg-background relative overflow-hidden">
         {/* Decorative corner glow */}
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-green-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
@@ -289,7 +314,7 @@ export default function Home() {
             >
               {/* Left Column - Info (2 cols) */}
               <div className="lg:col-span-2">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight tracking-tight">
                   Request a
                   <br />
                   <span className="text-gradient-energy">Quote</span>
@@ -307,7 +332,7 @@ export default function Home() {
                     },
                     {
                       title: 'Transparent Pricing',
-                      desc: 'Line-item breakdown showing exactly what you\u2019re paying for. No hidden costs.',
+                      desc: 'Line-item breakdown showing exactly what you’re paying for. No hidden costs.',
                     },
                     {
                       title: 'Implementation Timeline',
@@ -320,7 +345,7 @@ export default function Home() {
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-start space-x-4">
                       <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <FontAwesomeIcon icon={faCircleCheck} className="w-5 h-5 text-green-500" />
+                        <CheckCircle className="w-5 h-5 text-green-500" />
                       </div>
                       <div>
                         <h3 className="font-semibold mb-0.5 text-sm">{item.title}</h3>
@@ -355,7 +380,7 @@ export default function Home() {
 
                 {/* Contact info */}
                 <div className="text-sm text-muted-foreground space-y-1 mb-8">
-                  <p>Email: <a href="mailto:connect@digitalsense.tech" className="text-foreground hover:text-green-500 transition-colors">connect@digitalsense.tech</a></p>
+                  <p>Email: <a href="mailto:connect@digitalsense.tech" className="text-foreground hover:text-green-500 transition-colors font-medium">connect@digitalsense.tech</a></p>
                   <p>Mon&ndash;Fri, 8:00 AM &ndash; 5:00 PM CAT</p>
                 </div>
 
@@ -372,7 +397,7 @@ export default function Home() {
                       WhatsApp us
                     </div>
                   </div>
-                  <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />
                 </a>
               </div>
 
@@ -387,3 +412,4 @@ export default function Home() {
     </div>
   );
 }
+

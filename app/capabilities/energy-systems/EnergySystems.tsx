@@ -194,7 +194,7 @@ export function EnergySystems() {
           >
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 mb-8">
               <Zap className="w-4 h-4 text-energy" />
-              <span className="text-sm font-medium">Energy & Electrical Systems</span>
+              <span className="text-sm font-medium">Solar Energy</span>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">

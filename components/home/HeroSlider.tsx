@@ -40,7 +40,7 @@ const slides: HeroSlide[] = [
         },
         secondaryCTA: {
             label: 'Learn More',
-            href: '#capabilities',
+            href: '/capabilities/software-development',
         },
         stats: [
             { value: '>2', label: 'Seconds Avg Load Time' },
@@ -57,7 +57,7 @@ const slides: HeroSlide[] = [
         backgroundImage: '/images/infra.png',
         primaryCTA: {
             label: 'Request an Audit',
-            href: '#request-quote',
+            href: '/capabilities/it-infrastructure#assessment',
         },
         secondaryCTA: {
             label: 'Learn More',
@@ -78,7 +78,7 @@ const slides: HeroSlide[] = [
         backgroundImage: '/images/electrical.png',
         primaryCTA: {
             label: 'Size your system',
-            href: '#request-quote',
+            href: '/capabilities/energy-systems#calculator',
         },
         secondaryCTA: {
             label: 'Request a quote',

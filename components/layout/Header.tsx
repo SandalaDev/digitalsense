@@ -32,7 +32,7 @@ export function Header() {
             href: '#capabilities',
             children: [
                 {
-                    label: 'Energy & Electrical',
+                    label: 'Solar Energy',
                     href: '/capabilities/energy-systems',
                     icon: Zap,
                     description: 'Solar PV, battery storage, electrical infrastructure'
@@ -44,7 +44,7 @@ export function Header() {
                     description: 'Networks, servers, cloud solutions'
                 },
                 {
-                    label: 'Software Solutions',
+                    label: 'Web Development',
                     href: '/capabilities/software-development',
                     icon: Code,
                     description: 'Custom development, integrations, automation'

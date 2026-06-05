@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Digital Sense - Integrated Systems",
-  description: "Delivering integrated energy, IT, and software solutions that transform operations and reduce risk.",
+  title: "Digital Sense - Excellence in Web Development, Solar Energy & IT Infrastructure",
+  description: "Excellence in web development, solar energy, and IT infrastructure.",
   icons: {
     icon: '/logo/favicon.svg',
   },
