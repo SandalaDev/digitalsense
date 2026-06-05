@@ -73,7 +73,7 @@ export default function ITInfrastructurePage() {
             title: 'Managed IT Services',
             description: 'Your entire IT department, outsourced to experts. No big upfront costs — just one predictable monthly subscription.',
             features: ['Complete infrastructure oversight', 'Strategic technology roadmaps', 'Vendor management & procurement', 'IT budget planning & cost optimization', 'Compliance auditing & reporting'],
-            image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800',
+            image: '/images/server.png',
             highlight: true,
             tag: 'Most Popular',
         },
@@ -82,7 +82,7 @@ export default function ITInfrastructurePage() {
             title: 'Cloud PBX & Unified Communications',
             description: 'Enterprise-grade business phone systems hosted in the cloud. Crystal-clear calls, video conferencing, and team messaging — no expensive hardware.',
             features: ['Hosted PBX with auto-attendant & IVR', 'SIP trunking & VoIP services', 'Video conferencing & screen sharing', 'Microsoft Teams & Zoom integration', 'Call analytics & recording'],
-            image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800',
+            image: '/images/ip.png',
             highlight: true,
             tag: 'New Service',
         },
@@ -344,7 +344,7 @@ export default function ITInfrastructurePage() {
                 {/* Background */}
                 <div className="absolute inset-0">
                     <ImageWithFallback
-                        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920"
+                        src="/images/h100.png"
                         alt="IT Infrastructure"
                         className="w-full h-full object-cover"
                     />
@@ -660,11 +660,10 @@ export default function ITInfrastructurePage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.15, duration: 0.5 }}
-                                className={`relative rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-2xl ${
-                                    plan.popular
-                                        ? 'border-2 border-green-500 shadow-xl shadow-green-500/10 hover:shadow-green-500/20 md:-mt-4 md:mb-0'
-                                        : 'border border-neutral-200 hover:border-green-500/30 hover:shadow-green-500/5'
-                                }`}
+                                className={`relative rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-2xl ${plan.popular
+                                    ? 'border-2 border-green-500 shadow-xl shadow-green-500/10 hover:shadow-green-500/20 md:-mt-4 md:mb-0'
+                                    : 'border border-neutral-200 hover:border-green-500/30 hover:shadow-green-500/5'
+                                    }`}
                             >
                                 {plan.popular && (
                                     <div className="bg-green-500 text-black text-center py-2.5 text-sm font-bold flex items-center justify-center space-x-1">
@@ -693,11 +692,10 @@ export default function ITInfrastructurePage() {
 
                                     <a
                                         href="#assessment"
-                                        className={`w-full flex items-center justify-center space-x-2 py-4 rounded-xl font-semibold transition-all duration-200 mb-8 ${
-                                            plan.popular
-                                                ? 'bg-green-500 text-black hover:bg-green-400 shadow-lg shadow-green-500/25'
-                                                : 'bg-neutral-900 text-white hover:bg-neutral-800'
-                                        }`}
+                                        className={`w-full flex items-center justify-center space-x-2 py-4 rounded-xl font-semibold transition-all duration-200 mb-8 ${plan.popular
+                                            ? 'bg-green-500 text-black hover:bg-green-400 shadow-lg shadow-green-500/25'
+                                            : 'bg-neutral-900 text-white hover:bg-neutral-800'
+                                            }`}
                                     >
                                         <span>{plan.cta}</span>
                                         <ArrowRight className="w-4 h-4" />
@@ -757,68 +755,68 @@ export default function ITInfrastructurePage() {
                             <div className="absolute top-[72px] left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-green-500/20 via-green-500 to-green-500/20" />
 
                             {processSteps.map((step, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.15, duration: 0.4 }}
-                                        className="relative text-center"
-                                    >
-                                        {/* Step number circle */}
-                                        <div className="relative z-10 mx-auto w-16 h-16 rounded-2xl bg-green-500 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25">
-                                            <span className="text-2xl font-bold text-black">{index + 1}</span>
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.15, duration: 0.4 }}
+                                    className="relative text-center"
+                                >
+                                    {/* Step number circle */}
+                                    <div className="relative z-10 mx-auto w-16 h-16 rounded-2xl bg-green-500 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25">
+                                        <span className="text-2xl font-bold text-black">{index + 1}</span>
+                                    </div>
+                                    <div className="glass rounded-2xl p-6 border border-neutral-200 hover:border-green-500/30 hover:shadow-lg transition-all">
+                                        <div className="text-xs font-semibold text-green-600 mb-2 uppercase tracking-wider">{step.duration}</div>
+                                        <h3 className="text-lg font-bold mb-3">{step.title}</h3>
+                                        <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+                                        <div className="space-y-2">
+                                            {step.deliverables.map((d, idx) => (
+                                                <div key={idx} className="flex items-center space-x-2 text-left">
+                                                    <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                                                    <span className="text-xs text-muted-foreground">{d}</span>
+                                                </div>
+                                            ))}
                                         </div>
-                                        <div className="glass rounded-2xl p-6 border border-neutral-200 hover:border-green-500/30 hover:shadow-lg transition-all">
-                                            <div className="text-xs font-semibold text-green-600 mb-2 uppercase tracking-wider">{step.duration}</div>
-                                            <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                                            <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
-                                            <div className="space-y-2">
-                                                {step.deliverables.map((d, idx) => (
-                                                    <div key={idx} className="flex items-center space-x-2 text-left">
-                                                        <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
-                                                        <span className="text-xs text-muted-foreground">{d}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </motion.div>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
 
                         {/* Mobile: vertical timeline */}
                         <div className="lg:hidden space-y-6">
                             {processSteps.map((step, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="flex gap-4"
-                                    >
-                                        <div className="flex-shrink-0">
-                                            <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/25">
-                                                <span className="text-lg font-bold text-black">{index + 1}</span>
-                                            </div>
-                                            {index < processSteps.length - 1 && (
-                                                <div className="w-0.5 h-full bg-green-500/20 mx-auto mt-2" />
-                                            )}
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="flex gap-4"
+                                >
+                                    <div className="flex-shrink-0">
+                                        <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/25">
+                                            <span className="text-lg font-bold text-black">{index + 1}</span>
                                         </div>
-                                        <div className="glass rounded-2xl p-6 border border-neutral-200 flex-1 mb-2">
-                                            <div className="text-xs font-semibold text-green-600 mb-1 uppercase tracking-wider">{step.duration}</div>
-                                            <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                                            <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
-                                            <div className="space-y-2">
-                                                {step.deliverables.map((d, idx) => (
-                                                    <div key={idx} className="flex items-center space-x-2">
-                                                        <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
-                                                        <span className="text-xs text-muted-foreground">{d}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        {index < processSteps.length - 1 && (
+                                            <div className="w-0.5 h-full bg-green-500/20 mx-auto mt-2" />
+                                        )}
+                                    </div>
+                                    <div className="glass rounded-2xl p-6 border border-neutral-200 flex-1 mb-2">
+                                        <div className="text-xs font-semibold text-green-600 mb-1 uppercase tracking-wider">{step.duration}</div>
+                                        <h3 className="text-lg font-bold mb-2">{step.title}</h3>
+                                        <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+                                        <div className="space-y-2">
+                                            {step.deliverables.map((d, idx) => (
+                                                <div key={idx} className="flex items-center space-x-2">
+                                                    <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                                                    <span className="text-xs text-muted-foreground">{d}</span>
+                                                </div>
+                                            ))}
                                         </div>
-                                    </motion.div>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
                     </div>

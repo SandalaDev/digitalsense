@@ -175,7 +175,7 @@ export function EnergySystems() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1635424710918-d5c138981922?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2xhciUyMHBhbmVsJTIwaW5zdGFsbGF0aW9uJTIwcm9vZnxlbnwxfHx8fDE3Njk3MTY2Njl8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            src="/images/solarpage.png"
             alt="Solar panel installation"
             fill
             className="object-cover"
@@ -204,7 +204,7 @@ export function EnergySystems() {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl">
-              Digital Sense delivers solar PV, battery storage, and electrical infrastructure across Zambia—engineered for reliability, designed for ROI, installed for the long term.
+              Digital Sense delivers solar PV, battery storage, and electrical infrastructure across Zambia engineered for reliability, designed for ROI, installed for the long term.
             </p>
 
             <p className="text-lg text-white/80 mb-12 max-w-2xl">
@@ -678,8 +678,8 @@ export function EnergySystems() {
                     </div>
                     <div>
                       <div className="font-semibold mb-1">Phone</div>
-                      <a href="tel:+260XXXXXXXXX" className="text-energy hover:underline">
-                        +260-XXX-XXXXXX
+                      <a href="tel:+260978980494" className="text-energy hover:underline">
+                        +260 978 980 494
                       </a>
                       <div className="text-sm text-muted-foreground mt-1">
                         Monday-Friday, 08:00-17:00 CAT

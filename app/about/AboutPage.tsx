@@ -417,15 +417,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* WhatsApp CTA */}
-                <a href="#" className="group p-5 rounded-2xl bg-neutral-950 text-white flex items-center space-x-4 hover:bg-neutral-900 transition-all duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-[#25D366]/15 flex items-center justify-center flex-shrink-0 group-hover:bg-[#25D366]/25 transition-colors duration-300">
-                    <FontAwesomeIcon icon={faWhatsapp} className="w-6 h-6 text-[#25D366]" />
+                {/* Phone CTA */}
+                <a href="tel:+260978980494" className="group p-5 rounded-2xl bg-neutral-950 text-white flex items-center space-x-4 hover:bg-neutral-900 transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/25 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-green-500">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
                   </div>
                   <div className="flex-1">
-                    <div className="text-sm text-neutral-400">Prefer to chat?</div>
-                    <div className="text-base font-semibold text-[#25D366] group-hover:text-[#25D366]/80 transition-colors">
-                      WhatsApp us
+                    <div className="text-sm text-neutral-400">Prefer to call?</div>
+                    <div className="text-base font-semibold text-green-500 group-hover:text-green-400 transition-colors">
+                      +260 978 980 494
                     </div>
                   </div>
                   <FontAwesomeIcon icon={faArrowRight} className="w-5 h-5 text-neutral-500 group-hover:text-neutral-300 group-hover:translate-x-1 transition-all" />

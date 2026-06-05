@@ -426,7 +426,7 @@ export function SoftwareSystems() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080"
+            src="/images/software.png"
             alt="Software Development"
             fill
             className="object-cover"
@@ -523,8 +523,8 @@ export function SoftwareSystems() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">$50M+</div>
-              <div className="text-sm text-neutral-400">Annual GMV Processed</div>
+              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">2s</div>
+              <div className="text-sm text-neutral-400">Avg Load Time</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -533,8 +533,8 @@ export function SoftwareSystems() {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">40%</div>
-              <div className="text-sm text-neutral-400">Fewer Production Bugs</div>
+              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">99.9%</div>
+              <div className="text-sm text-neutral-400">Uptime</div>
             </motion.div>
           </div>
         </div>
@@ -963,8 +963,8 @@ export function SoftwareSystems() {
                     </div>
                     <div>
                       <div className="font-semibold mb-1">Phone</div>
-                      <a href="tel:+260XXXXXXXXX" className="text-green-500 hover:underline">
-                        +260-XXX-XXXXXX
+                      <a href="tel:+260978980494" className="text-green-500 hover:underline">
+                        +260 978 980 494
                       </a>
                       <div className="text-sm text-muted-foreground mt-1">
                         Monday-Friday, 08:00-17:00 CAT
