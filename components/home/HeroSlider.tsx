@@ -137,7 +137,7 @@ export function HeroSlider() {
     };
 
     return (
-        <section className="relative h-svh min-h-[720px] overflow-hidden sm:min-h-[680px] lg:min-h-[760px]">
+        <section className="relative h-[820px] overflow-hidden sm:h-svh sm:min-h-[680px] lg:min-h-[760px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                     key={currentSlide}
@@ -167,7 +167,7 @@ export function HeroSlider() {
                     </div>
 
                     {/* Content */}
-                    <div className="container-custom relative z-10 h-full flex items-end pb-24 pt-28 sm:items-center sm:pt-24 sm:pb-24 lg:pb-28">
+                    <div className="container-custom relative z-10 h-full flex items-start pb-24 pt-40 sm:items-center sm:pt-24 sm:pb-24 lg:pb-28">
                         <div className="w-full max-w-5xl text-white space-y-4 sm:space-y-5 lg:space-y-6 2xl:space-y-8">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
@@ -227,17 +227,17 @@ export function HeroSlider() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.6 }}
-                                    className="grid w-full max-w-5xl grid-cols-1 gap-2.5 pt-1 min-[520px]:grid-cols-3 sm:gap-3 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)_minmax(0,1.65fr)] lg:gap-4 2xl:gap-5"
+                                    className="grid w-full max-w-5xl grid-cols-1 gap-0 border-t border-white/15 pt-4 min-[520px]:grid-cols-3 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)_minmax(0,1.65fr)] lg:pt-5"
                                 >
                                     {slides[currentSlide].stats.map((stat, index) => (
                                         <div
                                             key={index}
-                                            className="min-w-0 rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 backdrop-blur-md min-[520px]:px-4 min-[520px]:py-3 md:border-l-2 md:border-l-accent/60 md:bg-white/[0.07] lg:px-5 lg:py-4"
+                                            className="min-w-0 border-t border-white/10 py-3 first:border-t-0 first:pt-0 min-[520px]:border-l min-[520px]:border-t-0 min-[520px]:py-0 min-[520px]:pl-4 min-[520px]:pr-4 min-[520px]:first:border-l-0 min-[520px]:first:pl-0 lg:pl-6 lg:pr-6 lg:first:pl-0"
                                         >
-                                            <div className="text-base font-bold leading-tight text-accent sm:text-lg md:text-xl 2xl:text-3xl">
+                                            <div className="text-sm font-semibold leading-tight text-accent sm:text-base md:text-lg 2xl:text-2xl">
                                                 {stat.value}
                                             </div>
-                                            <div className="mt-1 text-[0.7rem] leading-snug text-white/72 sm:text-xs md:text-sm">
+                                            <div className="mt-1.5 text-[0.72rem] leading-relaxed text-white/68 sm:text-xs md:text-sm">
                                                 {stat.label}
                                             </div>
                                         </div>

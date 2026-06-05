@@ -1,0 +1,376 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Digital Sense" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Digital Sense" [ref=e7]
+      - navigation [ref=e8]:
+        - link "About" [ref=e10] [cursor=pointer]:
+          - /url: /about
+          - text: About
+        - button "Capabilities" [ref=e12]:
+          - generic [ref=e13]: Capabilities
+          - img [ref=e14]
+        - link "Contact" [ref=e17] [cursor=pointer]:
+          - /url: /about#contact
+          - text: Contact
+      - link "Request a Quote" [ref=e19] [cursor=pointer]:
+        - /url: /about#contact
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img "Web Development &" [ref=e25]
+          - generic [ref=e29]:
+            - generic [ref=e32]: Software
+            - heading "Web Development & Custom Software" [level=1] [ref=e33]:
+              - text: Web Development &
+              - text: Custom Software
+            - paragraph [ref=e34]: We build production-grade web applications, IoT integration layers, internal operations platforms, and full-stack digital products on modern JavaScript and React ecosystem architectures.
+            - generic [ref=e35]:
+              - link "Request a Proposal" [ref=e36] [cursor=pointer]:
+                - /url: "#request-quote"
+                - generic [ref=e37]: Request a Proposal
+                - img [ref=e38]
+              - link "Learn More" [ref=e40] [cursor=pointer]:
+                - /url: "#capabilities"
+                - generic [ref=e41]: Learn More
+                - img [ref=e42]
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: ">2"
+                - generic [ref=e47]: Seconds Avg Load Time
+              - generic [ref=e48]:
+                - generic [ref=e49]: 90+
+                - generic [ref=e50]: Lighthouse Targets
+              - generic [ref=e51]:
+                - generic [ref=e52]: Fully Extensible
+                - generic [ref=e53]: Connect websites, CRMs, payments, dashboards, APIs, and internal tools into one digital system.
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - button "Go to slide 1" [ref=e58]:
+              - generic: Software
+            - button "Go to slide 2" [ref=e60]:
+              - generic: I.T infra
+            - button "Go to slide 3" [ref=e62]:
+              - generic: Solar Energy & Power Systems
+          - link [ref=e64] [cursor=pointer]:
+            - /url: "#capabilities"
+          - generic [ref=e67]:
+            - button "Previous slide" [ref=e68]:
+              - img [ref=e69]
+            - button "Next slide" [ref=e71]:
+              - img [ref=e72]
+        - generic [ref=e75]:
+          - generic [ref=e76]: "01"
+          - generic [ref=e78]: "03"
+      - generic [ref=e79]:
+        - heading "Trusted by teams who take reliability seriously" [level=2] [ref=e81]
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - img "Jenny Internet" [ref=e86]
+            - img "Elsewedy Electric" [ref=e88]
+            - img "Exmile Solutions" [ref=e90]
+            - img "Mkango Resources" [ref=e92]
+            - img "Sarovar Hotels" [ref=e94]
+            - img "SFQ" [ref=e96]
+            - img "Botswana Government" [ref=e98]
+          - generic [ref=e99]:
+            - img [ref=e101]
+            - img [ref=e103]
+            - img [ref=e105]
+            - img [ref=e107]
+            - img [ref=e109]
+            - img [ref=e111]
+            - img [ref=e113]
+      - generic [ref=e115]:
+        - generic [ref=e116]:
+          - heading "Our Capabilities" [level=2] [ref=e117]
+          - paragraph [ref=e118]: Technical excellence across energy, infrastructure, and intelligent systems
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - button "Energy & Electrical Systems Design, integrate, and maintain power systems that ensure reliable, efficient, and sustainable energy delivery." [ref=e121]:
+              - generic [ref=e122]:
+                - img [ref=e124]
+                - generic [ref=e126]:
+                  - heading "Energy & Electrical Systems" [level=3] [ref=e127]
+                  - paragraph [ref=e128]: Design, integrate, and maintain power systems that ensure reliable, efficient, and sustainable energy delivery.
+              - img [ref=e130]
+            - generic [ref=e132]:
+              - generic [ref=e133]:
+                - heading "What This System Controls" [level=4] [ref=e134]
+                - list [ref=e135]:
+                  - listitem [ref=e136]:
+                    - img [ref=e137]
+                    - generic [ref=e139]: Solar & renewable energy integration
+                  - listitem [ref=e140]:
+                    - img [ref=e141]
+                    - generic [ref=e143]: Power distribution & backup systems
+                  - listitem [ref=e144]:
+                    - img [ref=e145]
+                    - generic [ref=e147]: Energy monitoring & optimization
+                  - listitem [ref=e148]:
+                    - img [ref=e149]
+                    - generic [ref=e151]: Compliance with NEC & local codes
+                - link "Learn More" [ref=e153] [cursor=pointer]:
+                  - /url: "#energy-&-electrical-systems"
+                  - generic [ref=e154]: Learn More
+                  - img [ref=e155]
+              - img "Energy & Electrical Systems" [ref=e158]
+          - generic [ref=e160]:
+            - button "IT & Infrastructure Systems Build robust network and infrastructure systems that enable seamless connectivity and data flow." [ref=e161]:
+              - generic [ref=e162]:
+                - img [ref=e164]
+                - generic [ref=e166]:
+                  - heading "IT & Infrastructure Systems" [level=3] [ref=e167]
+                  - paragraph [ref=e168]: Build robust network and infrastructure systems that enable seamless connectivity and data flow.
+              - img [ref=e170]
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - heading "What This System Controls" [level=4] [ref=e174]
+                - list [ref=e175]:
+                  - listitem [ref=e176]:
+                    - img [ref=e177]
+                    - generic [ref=e179]: Network design & implementation
+                  - listitem [ref=e180]:
+                    - img [ref=e181]
+                    - generic [ref=e183]: Data center infrastructure
+                  - listitem [ref=e184]:
+                    - img [ref=e185]
+                    - generic [ref=e187]: Cybersecurity frameworks
+                  - listitem [ref=e188]:
+                    - img [ref=e189]
+                    - generic [ref=e191]: Cloud & hybrid solutions
+                - link "Learn More" [ref=e193] [cursor=pointer]:
+                  - /url: "#it-&-infrastructure-systems"
+                  - generic [ref=e194]: Learn More
+                  - img [ref=e195]
+              - img "IT & Infrastructure Systems" [ref=e198]
+          - generic [ref=e200]:
+            - button "Software & Intelligent Systems Develop intelligent software solutions that automate, optimize, and transform your operations." [ref=e201]:
+              - generic [ref=e202]:
+                - img [ref=e204]
+                - generic [ref=e206]:
+                  - heading "Software & Intelligent Systems" [level=3] [ref=e207]
+                  - paragraph [ref=e208]: Develop intelligent software solutions that automate, optimize, and transform your operations.
+              - img [ref=e210]
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - heading "What This System Controls" [level=4] [ref=e214]
+                - list [ref=e215]:
+                  - listitem [ref=e216]:
+                    - img [ref=e217]
+                    - generic [ref=e219]: Custom software development
+                  - listitem [ref=e220]:
+                    - img [ref=e221]
+                    - generic [ref=e223]: IoT & automation platforms
+                  - listitem [ref=e224]:
+                    - img [ref=e225]
+                    - generic [ref=e227]: AI & machine learning integration
+                  - listitem [ref=e228]:
+                    - img [ref=e229]
+                    - generic [ref=e231]: System integration & APIs
+                - link "Learn More" [ref=e233] [cursor=pointer]:
+                  - /url: "#software-&-intelligent-systems"
+                  - generic [ref=e234]: Learn More
+                  - img [ref=e235]
+              - img "Software & Intelligent Systems" [ref=e238]
+      - generic [ref=e241]:
+        - heading "Featured Work" [level=2] [ref=e243]
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - img "Jenny Internet Zambia - Connecting Africa to Information" [ref=e247]
+            - generic [ref=e249]:
+              - generic [ref=e252]: Featured Engagement
+              - heading "Jenny Internet Zambia" [level=3] [ref=e253]
+              - paragraph [ref=e254]: Internet Service Provider — Fiber & Wireless
+          - generic [ref=e255]:
+            - generic [ref=e256]:
+              - paragraph [ref=e257]: Digital Sense is the installation and maintenance partner for Jenny Internet's access network in Zambia, supporting the rollout and ongoing reliability of fixed uncapped internet services to homes and businesses.
+              - generic [ref=e258]:
+                - heading "Our responsibilities include:" [level=4] [ref=e259]
+                - generic [ref=e260]:
+                  - generic [ref=e261]:
+                    - img [ref=e262]
+                    - generic [ref=e264]: Field installation and on-site technical work
+                  - generic [ref=e265]:
+                    - img [ref=e266]
+                    - generic [ref=e268]: Maintenance and fault response
+                  - generic [ref=e269]:
+                    - img [ref=e270]
+                    - generic [ref=e272]: Coordination between network, infrastructure, and customer environments
+              - paragraph [ref=e273]: This work directly supports service availability, uptime, and customer experience across Jenny Internet's operating footprint.
+            - generic [ref=e274]:
+              - generic [ref=e275]:
+                - generic [ref=e276]:
+                  - generic [ref=e277]: Zambia
+                  - generic [ref=e278]: Operating Region
+                - generic [ref=e279]:
+                  - generic [ref=e280]: 24/7
+                  - generic [ref=e281]: Support Coverage
+                - generic [ref=e282]:
+                  - generic [ref=e283]: ISP
+                  - generic [ref=e284]: Partner Category
+              - generic [ref=e285]:
+                - generic [ref=e286]: IT Infrastructure
+                - generic [ref=e287]: Field Operations
+      - generic [ref=e291]:
+        - generic [ref=e292]:
+          - heading "Request a Quote" [level=2] [ref=e293]:
+            - text: Request a
+            - text: Quote
+          - paragraph [ref=e294]: Get a detailed, transparent proposal with technical specifications, clear pricing, and realistic timelines.
+          - generic [ref=e295]:
+            - generic [ref=e296]:
+              - img [ref=e298]
+              - generic [ref=e300]:
+                - heading "Technical Specifications" [level=3] [ref=e301]
+                - paragraph [ref=e302]: Complete system design with equipment specs, performance metrics, and compliance standards.
+            - generic [ref=e303]:
+              - img [ref=e305]
+              - generic [ref=e307]:
+                - heading "Transparent Pricing" [level=3] [ref=e308]
+                - paragraph [ref=e309]: Line-item breakdown showing exactly what you’re paying for. No hidden costs.
+            - generic [ref=e310]:
+              - img [ref=e312]
+              - generic [ref=e314]:
+                - heading "Implementation Timeline" [level=3] [ref=e315]
+                - paragraph [ref=e316]: Realistic project schedule from assessment through deployment.
+            - generic [ref=e317]:
+              - img [ref=e319]
+              - generic [ref=e321]:
+                - heading "ROI Analysis" [level=3] [ref=e322]
+                - paragraph [ref=e323]: Financial projections with documented assumptions.
+          - generic [ref=e324]:
+            - heading "How It Works" [level=3] [ref=e325]
+            - generic [ref=e326]:
+              - generic [ref=e327]:
+                - generic [ref=e329]: "1"
+                - generic [ref=e330]: Submit your request
+              - generic [ref=e331]:
+                - generic [ref=e333]: "2"
+                - generic [ref=e334]: Technical review
+              - generic [ref=e335]:
+                - generic [ref=e337]: "3"
+                - generic [ref=e338]: Site assessment (if needed)
+              - generic [ref=e339]:
+                - generic [ref=e341]: "4"
+                - generic [ref=e342]: Detailed proposal within 48 hrs
+              - generic [ref=e343]:
+                - generic [ref=e345]: "5"
+                - generic [ref=e346]: Consultation call
+          - generic [ref=e347]:
+            - paragraph [ref=e348]:
+              - text: "Email:"
+              - link "connect@digitalsense.tech" [ref=e349] [cursor=pointer]:
+                - /url: mailto:connect@digitalsense.tech
+            - paragraph [ref=e350]: Mon–Fri, 8:00 AM – 5:00 PM CAT
+          - link "Prefer to chat? WhatsApp us" [ref=e351] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e353]
+            - generic [ref=e355]:
+              - generic [ref=e356]: Prefer to chat?
+              - generic [ref=e357]: WhatsApp us
+            - img [ref=e358]
+        - generic [ref=e362]:
+          - generic [ref=e363]:
+            - heading "Contact Information" [level=3] [ref=e364]
+            - generic [ref=e365]:
+              - generic [ref=e366]:
+                - generic [ref=e367]: First Name *
+                - textbox "First Name *" [ref=e368]:
+                  - /placeholder: John
+              - generic [ref=e369]:
+                - generic [ref=e370]: Last Name *
+                - textbox "Last Name *" [ref=e371]:
+                  - /placeholder: Doe
+            - generic [ref=e372]:
+              - generic [ref=e373]: Email Address *
+              - textbox "Email Address *" [ref=e374]:
+                - /placeholder: john@company.com
+            - generic [ref=e375]:
+              - generic [ref=e376]: Phone Number *
+              - textbox "Phone Number *" [ref=e377]:
+                - /placeholder: +260 97 XXX XXXX
+            - generic [ref=e378]:
+              - generic [ref=e379]: Company / Organization
+              - textbox "Company / Organization" [ref=e380]:
+                - /placeholder: Optional
+          - generic [ref=e381]:
+            - heading "Which service are you interested in? *" [level=3] [ref=e382]
+            - generic [ref=e383]:
+              - button "Energy & Power Energy & Power Solar PV, battery storage, electrical systems" [ref=e384] [cursor=pointer]:
+                - radio "Energy & Power" [ref=e385]
+                - img [ref=e387]
+                - generic [ref=e389]: Energy & Power
+                - generic [ref=e390]: Solar PV, battery storage, electrical systems
+              - button "IT & Infrastructure IT & Infrastructure Managed IT, cybersecurity, cloud & network" [ref=e391] [cursor=pointer]:
+                - radio "IT & Infrastructure" [ref=e392]
+                - img [ref=e394]
+                - generic [ref=e399]: IT & Infrastructure
+                - generic [ref=e400]: Managed IT, cybersecurity, cloud & network
+              - button "Software Development Software Development Web apps, mobile, custom software & APIs" [ref=e401] [cursor=pointer]:
+                - radio "Software Development" [ref=e402]
+                - img [ref=e404]
+                - generic [ref=e407]: Software Development
+                - generic [ref=e408]: Web apps, mobile, custom software & APIs
+          - generic [ref=e409]:
+            - button "Request Detailed Quote" [disabled]:
+              - generic: Request Detailed Quote
+              - img
+            - paragraph [ref=e410]: We'll respond within 48 business hours with a detailed quote and next steps.
+  - contentinfo [ref=e411]:
+    - generic [ref=e412]:
+      - generic [ref=e413]:
+        - generic [ref=e414]:
+          - img "Digital Sense" [ref=e416]
+          - paragraph [ref=e417]: Delivering integrated energy, IT, and software solutions that transform operations and reduce risk.
+          - generic [ref=e418]:
+            - link [ref=e419] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e420]
+            - link [ref=e424] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e425]
+            - link [ref=e427] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e428]
+        - generic [ref=e431]:
+          - heading "Capabilities" [level=3] [ref=e432]
+          - list [ref=e433]:
+            - listitem [ref=e434]:
+              - link "Energy & Electrical Systems" [ref=e435] [cursor=pointer]:
+                - /url: "#energy-systems"
+            - listitem [ref=e436]:
+              - link "IT & Infrastructure" [ref=e437] [cursor=pointer]:
+                - /url: "#it-systems"
+            - listitem [ref=e438]:
+              - link "Software & Intelligent Systems" [ref=e439] [cursor=pointer]:
+                - /url: "#software-systems"
+        - generic [ref=e440]:
+          - heading "Quick Links" [level=3] [ref=e441]
+          - list [ref=e442]:
+            - listitem [ref=e443]:
+              - link "IT Outsourcing Pricing" [ref=e444] [cursor=pointer]:
+                - /url: /capabilities/it-infrastructure#pricing
+            - listitem [ref=e445]:
+              - link "Unitised Power System Pricing" [ref=e446] [cursor=pointer]:
+                - /url: /capabilities/energy-systems#pricing
+            - listitem [ref=e447]:
+              - link "Power System Calculator" [ref=e448] [cursor=pointer]:
+                - /url: /capabilities/energy-systems#calculator
+        - generic [ref=e449]:
+          - heading "Contact" [level=3] [ref=e450]
+          - list [ref=e451]:
+            - listitem [ref=e452]:
+              - img [ref=e453]
+              - link "connect@digitalsense.tech" [ref=e456] [cursor=pointer]:
+                - /url: mailto:connect@digitalsense.tech
+            - listitem [ref=e457]:
+              - img [ref=e458]
+              - generic [ref=e461]:
+                - text: "Plot F3091/M #2, Foxdale Area"
+                - text: Lusaka, 10101, Zambia
+      - paragraph [ref=e463]: © 2026 Digital Sense. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e469] [cursor=pointer]:
+    - img [ref=e470]
