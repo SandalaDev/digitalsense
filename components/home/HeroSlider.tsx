@@ -26,75 +26,75 @@ interface HeroSlide {
     }[];
 }
 
+const slides: HeroSlide[] = [
+    {
+        id: 1,
+        badge: 'Software',
+        title: 'Web Development &',
+        titleHighlight: 'Custom Software',
+        description: 'We build production-grade web applications, IoT integration layers, internal operations platforms, and full-stack digital products on modern JavaScript and React ecosystem architectures.',
+        backgroundImage: '/images/swe.png',
+        primaryCTA: {
+            label: 'Request a Proposal',
+            href: '#request-quote',
+        },
+        secondaryCTA: {
+            label: 'Learn More',
+            href: '#capabilities',
+        },
+        stats: [
+            { value: '>2', label: 'Seconds Avg Load Time' },
+            { value: '90+', label: 'Lighthouse Targets' },
+            { value: 'Fully Extensible', label: 'Connect websites, CRMs, payments, dashboards, APIs, and internal tools into one digital system.' },
+        ],
+    },
+    {
+        id: 2,
+        badge: 'I.T infra',
+        title: 'Enterprise IT',
+        titleHighlight: 'Infrastructure',
+        description: 'Networks, cloud, cybersecurity, managed IT service and data center systems. We design, deploy, and manage enterprise-grade infrastructure for environments where performance and trust cannot be optional.',
+        backgroundImage: '/images/infra.png',
+        primaryCTA: {
+            label: 'Request an Audit',
+            href: '#request-quote',
+        },
+        secondaryCTA: {
+            label: 'Learn More',
+            href: '#capabilities',
+        },
+        stats: [
+            { value: '99.999%', label: '5 Nines Ready Architecture' },
+            { value: 'Zero Trust Aligned', label: 'Security foundations built into identity, access, devices, and networks.' },
+            { value: 'Network Segmentation', label: 'Critical systems isolated to reduce security exposure and operational blast radius.' },
+        ],
+    },
+    {
+        id: 3,
+        badge: 'Solar Energy & Power Systems',
+        title: 'Solar Energy &',
+        titleHighlight: 'Power Systems',
+        description: 'From commercial solar and industrial energy systems to microgrids and mission-critical backup power, we deliver engineered power infrastructure backed by serious supplier partnerships and professional execution.',
+        backgroundImage: '/images/electrical.png',
+        primaryCTA: {
+            label: 'Size your system',
+            href: '#request-quote',
+        },
+        secondaryCTA: {
+            label: 'Request a quote',
+            href: '#request-quote',
+        },
+        stats: [
+            { value: '2.5+ MW', label: 'Installed Capacity' },
+            { value: 'Utility-to-Microgrid Expertise', label: 'Systems designed for everything from enterprise sites to distributed energy environments.' },
+            { value: 'Tier-1 Supplier Partnerships', label: 'Access to equipment, warranties & OEM-grade reliability.' },
+        ],
+    },
+];
+
 export function HeroSlider() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [direction, setDirection] = useState(0);
-
-    const slides: HeroSlide[] = [
-        {
-            id: 1,
-            badge: 'Software',
-            title: 'Web Development &',
-            titleHighlight: 'Custom Software',
-            description: 'We build production-grade web applications, IoT integration layers, internal operations platforms, and full-stack digital products on modern JavaScript and React ecosystem architectures.',
-            backgroundImage: '/images/swe.png',
-            primaryCTA: {
-                label: 'Request a Proposal',
-                href: '#request-quote',
-            },
-            secondaryCTA: {
-                label: 'Learn More',
-                href: '#capabilities',
-            },
-            stats: [
-                { value: '>2', label: 'Seconds Avg Load Time' },
-                { value: '90+', label: 'Lighthouse Targets' },
-                { value: 'Fully Extensible', label: 'Connect websites, CRMs, payments, dashboards, APIs, and internal tools into one digital system.' },
-            ],
-        },
-        {
-            id: 2,
-            badge: 'I.T infra',
-            title: 'Enterprise IT',
-            titleHighlight: 'Infrastructure',
-            description: 'Networks, cloud, cybersecurity, managed IT service and data center systems. We design, deploy, and manage enterprise-grade infrastructure for environments where performance and trust cannot be optional.',
-            backgroundImage: '/images/infra.png',
-            primaryCTA: {
-                label: 'Request an Audit',
-                href: '#request-quote',
-            },
-            secondaryCTA: {
-                label: 'Learn More',
-                href: '#capabilities',
-            },
-            stats: [
-                { value: '99.999%', label: '5 Nines Ready Architecture' },
-                { value: 'Zero Trust Aligned', label: 'Security foundations built into identity, access, devices, and networks.' },
-                { value: 'Network Segmentation', label: 'Critical systems isolated to reduce security exposure and operational blast radius.' },
-            ],
-        },
-        {
-            id: 3,
-            badge: 'Solar Energy & Power Systems',
-            title: 'Solar Energy &',
-            titleHighlight: 'Power Systems',
-            description: 'From commercial solar and industrial energy systems to microgrids and mission-critical backup power, we deliver engineered power infrastructure backed by serious supplier partnerships and professional execution.',
-            backgroundImage: '/images/electrical.png',
-            primaryCTA: {
-                label: 'Size your system',
-                href: '#request-quote',
-            },
-            secondaryCTA: {
-                label: 'Request a quote',
-                href: '#request-quote',
-            },
-            stats: [
-                { value: '2.5+ MW', label: 'Installed Capacity' },
-                { value: 'Utility-to-Microgrid Expertise', label: 'Systems designed for everything from enterprise sites to distributed energy environments.' },
-                { value: 'Tier-1 Supplier Partnerships', label: 'Access to equipment, warranties & OEM-grade reliability.' },
-            ],
-        },
-    ];
 
     const nextSlide = () => {
         setDirection(1);
@@ -114,11 +114,12 @@ export function HeroSlider() {
     // Auto-advance slides every 14 seconds
     useEffect(() => {
         const timer = setInterval(() => {
-            nextSlide();
+            setDirection(1);
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
         }, 14000);
 
         return () => clearInterval(timer);
-    }, [currentSlide]);
+    }, []);
 
     const slideVariants = {
         enter: (direction: number) => ({
@@ -136,7 +137,7 @@ export function HeroSlider() {
     };
 
     return (
-        <section className="relative h-svh min-h-[600px] overflow-hidden">
+        <section className="relative h-svh min-h-[720px] overflow-hidden sm:min-h-[680px] lg:min-h-[760px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
                 <motion.div
                     key={currentSlide}
@@ -166,8 +167,8 @@ export function HeroSlider() {
                     </div>
 
                     {/* Content */}
-                    <div className="container-custom relative h-full flex items-end pb-28 sm:items-center sm:pt-20 sm:pb-24">
-                        <div className="max-w-4xl text-white space-y-4 sm:space-y-5 lg:space-y-6 2xl:space-y-8">
+                    <div className="container-custom relative z-10 h-full flex items-end pb-24 pt-28 sm:items-center sm:pt-24 sm:pb-24 lg:pb-28">
+                        <div className="w-full max-w-5xl text-white space-y-4 sm:space-y-5 lg:space-y-6 2xl:space-y-8">
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -193,7 +194,7 @@ export function HeroSlider() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.4 }}
-                                className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-white/80 max-w-2xl leading-relaxed"
+                                className="text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl text-white/80 max-w-3xl leading-relaxed"
                             >
                                 {slides[currentSlide].description}
                             </motion.p>
@@ -202,7 +203,7 @@ export function HeroSlider() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.5 }}
-                                className="flex flex-col sm:flex-row gap-3 sm:gap-3 md:gap-4 pt-1 sm:pt-2"
+                                className="flex flex-col min-[420px]:flex-row gap-3 sm:gap-3 md:gap-4 pt-1 sm:pt-2"
                             >
                                 <a
                                     href={slides[currentSlide].primaryCTA.href}
@@ -226,14 +227,19 @@ export function HeroSlider() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: 0.6 }}
-                                    className="hidden sm:grid grid-cols-3 gap-4 md:gap-6 2xl:gap-8 max-w-2xl"
+                                    className="grid w-full max-w-5xl grid-cols-1 gap-2.5 pt-1 min-[520px]:grid-cols-3 sm:gap-3 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)_minmax(0,1.65fr)] lg:gap-4 2xl:gap-5"
                                 >
                                     {slides[currentSlide].stats.map((stat, index) => (
-                                        <div key={index} className="border-l-2 border-accent/50 pl-3 md:pl-4">
-                                            <div className="text-xl md:text-2xl 2xl:text-4xl font-bold mb-1 text-accent">
+                                        <div
+                                            key={index}
+                                            className="min-w-0 rounded-xl border border-white/10 bg-black/25 px-3 py-2.5 backdrop-blur-md min-[520px]:px-4 min-[520px]:py-3 md:border-l-2 md:border-l-accent/60 md:bg-white/[0.07] lg:px-5 lg:py-4"
+                                        >
+                                            <div className="text-base font-bold leading-tight text-accent sm:text-lg md:text-xl 2xl:text-3xl">
                                                 {stat.value}
                                             </div>
-                                            <div className="text-xs md:text-sm text-white/70">{stat.label}</div>
+                                            <div className="mt-1 text-[0.7rem] leading-snug text-white/72 sm:text-xs md:text-sm">
+                                                {stat.label}
+                                            </div>
                                         </div>
                                     ))}
                                 </motion.div>
