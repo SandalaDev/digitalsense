@@ -27,12 +27,12 @@ function FormSelect({
       </label>
       <select
         id={id}
-        className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
+        className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors [&>option]:bg-white [&>option]:text-neutral-900"
         {...rest}
       >
-        <option value="">Select...</option>
+        <option value="" className="bg-white text-neutral-900">Select...</option>
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>{opt.label}</option>
+          <option key={opt.value} value={opt.value} className="bg-white text-neutral-900">{opt.label}</option>
         ))}
       </select>
       {error && <p className="text-xs text-red-500 mt-1">{error}</p>}

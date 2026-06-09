@@ -98,7 +98,7 @@ export function RFQForm({ presetService }: RFQFormProps = {}) {
   const setValueAny = setValue as UseFormSetValueAny;
 
   return (
-    <div className="glass rounded-2xl p-6 md:p-10">
+    <div className="glass rounded-2xl p-6 md:p-10 text-foreground">
       <form onSubmit={handleSubmit(onSubmit as Parameters<typeof handleSubmit>[0])} className="space-y-8 pb-24 md:pb-0">
         <RFQContactSection register={registerAny} errors={errorsAny} />
 

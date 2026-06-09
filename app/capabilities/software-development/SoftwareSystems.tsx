@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Code,
+  Cpu,
+  Database,
   Layers,
   Zap,
   Globe,
@@ -15,11 +17,17 @@ import {
   CheckCircle,
   ChevronDown,
   ArrowRight,
-  Phone,
   Mail,
+  Phone,
   TrendingUp,
   Shield,
-  Users
+  Users,
+  Check,
+  CalendarCheck,
+  Clock,
+  Gauge,
+  GitBranch,
+  Rocket
 } from 'lucide-react';
 import { ImageWithFallback } from '@/components/shared/ImageWithFallback';
 import { RFQForm } from '@/components/forms/rfq/RFQForm';
@@ -304,63 +312,33 @@ const businessImpact = [
 const processSteps = [
   {
     phase: 'Discovery & Architecture',
-    duration: '2-3 weeks',
-    description: 'Align on business objectives, technical requirements, and success metrics',
-    deliverables: ['Technical architecture docs', 'Content model design', 'Integration planning', 'Brand strategy alignment', 'Project roadmap']
+    duration: 'Week 1',
+    description: 'Align on business objectives, users, integrations, content, and measurable launch outcomes.',
+    deliverables: ['Technical architecture', 'Feature roadmap', 'Integration plan', 'Success metrics']
   },
   {
-    phase: 'Brand & Design Strategy',
-    duration: '3-4 weeks',
-    description: 'Strategic brand positioning and visual identity development',
-    deliverables: ['Competitive analysis', 'Brand voice definition', 'Style directions', 'Brand guidelines', 'Mood boards']
+    phase: 'Experience & Content System',
+    duration: 'Weeks 2-3',
+    description: 'Turn brand, UX, and content requirements into reusable page patterns and CMS structures.',
+    deliverables: ['Interface system', 'Content model', 'Prototype', 'Accessibility baseline']
   },
   {
-    phase: 'UI/UX Design & Prototyping',
-    duration: '3-4 weeks',
-    description: 'User research, wireframing, and high-fidelity design system creation',
-    deliverables: ['Information architecture', 'Component library', 'Interactive prototypes', 'Design system', 'Accessibility testing']
-  },
-  {
-    phase: 'Content Strategy & Architecture',
-    duration: '2-3 weeks',
-    description: 'Content audit, keyword research, and editorial workflow planning',
-    deliverables: ['Content templates', 'SEO optimization', 'Governance frameworks', 'Content model', 'Editorial workflows']
-  },
-  {
-    phase: 'Development Sprints',
+    phase: 'Build Sprints',
     duration: '4-8 weeks',
-    description: 'Iterative development in two-week sprints with working software delivered early',
-    deliverables: ['Working software', 'Feature prioritization', 'Sprint reviews', 'Continuous integration', 'Documentation']
+    description: 'Develop the platform in two-week increments with working demos and clear technical review.',
+    deliverables: ['Working software', 'CMS setup', 'API integrations', 'Continuous integration']
   },
   {
-    phase: 'AI & Integration',
-    duration: '2-4 weeks',
-    description: 'Smart features and third-party integrations implemented and tested',
-    deliverables: ['API development', 'AI model integration', 'Third-party connections', 'System testing', 'Performance optimization']
-  },
-  {
-    phase: 'Testing & Optimization',
-    duration: '2-3 weeks',
-    description: 'Comprehensive QA including automated testing and accessibility audits',
-    deliverables: ['Automated tests', 'Cross-browser testing', 'WCAG 2.1 AA compliance', '90+ Lighthouse scores', 'Security scanning']
-  },
-  {
-    phase: 'Deployment & Launch',
+    phase: 'Quality & Launch',
     duration: '1-2 weeks',
-    description: 'Staged rollout with monitoring dashboards configured',
-    deliverables: ['DNS & SSL setup', 'CDN configuration', 'Analytics setup', 'Launch monitoring', '48-hour support']
+    description: 'Validate performance, SEO, accessibility, security, analytics, and production readiness.',
+    deliverables: ['QA report', '90+ Lighthouse target', 'Security checks', 'Launch runbook']
   },
   {
-    phase: 'Training & Documentation',
-    duration: '1 week',
-    description: 'Comprehensive training and documentation for your team',
-    deliverables: ['Video tutorials', 'Written guides', 'Brand guidelines', 'Architecture docs', 'CMS training']
-  },
-  {
-    phase: 'Ongoing Partnership',
+    phase: 'Operate & Improve',
     duration: 'Continuous',
-    description: 'Monthly reviews, updates, and strategic consulting',
-    deliverables: ['Performance reviews', 'Security updates', 'Feature enhancements', 'Content optimization', 'Strategic consulting']
+    description: 'Support content teams, monitor production, and plan improvements from real usage data.',
+    deliverables: ['Training', 'Documentation', 'Monitoring', 'Enhancement backlog']
   }
 ];
 
@@ -407,13 +385,97 @@ const faqs = [
   }
 ];
 
+const stats = [
+  { value: '90+', label: 'Lighthouse Performance Targets', icon: Gauge },
+  { value: '2-3x', label: 'Faster Delivery Through Typed Systems', icon: Rocket },
+  { value: '99.9%', label: 'Launch Uptime Architecture', icon: Shield },
+  { value: '24/7', label: 'Monitoring-Ready Deployments', icon: Clock }
+];
+
 const techStack = [
-  { category: 'Frontend', logos: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Vue.js', 'Tailwind CSS', 'Framer Motion'] },
-  { category: 'Backend', logos: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'GraphQL', 'Prisma', 'Supabase'] },
-  { category: 'CMS', logos: ['Payload CMS', 'Sanity', 'Contentful', 'Strapi'] },
-  { category: 'AI/ML', logos: ['OpenAI', 'Anthropic', 'Vercel AI SDK', 'LangChain', 'Pinecone'] },
-  { category: 'Cloud', logos: ['Vercel', 'Cloudflare', 'AWS', 'Google Cloud', 'Digital Ocean'] },
-  { category: 'Design', logos: ['Figma', 'Adobe Suite', 'Sketch', 'Framer', 'Miro'] }
+  {
+    icon: Code,
+    title: 'Application Core',
+    desc: 'The default lane for public websites, customer portals, dashboards, and high-performance web apps.',
+    proof: 'Server rendering, static generation, typed UI, and accessible component systems.',
+    tools: [
+      { name: 'Next.js', note: 'App Router', logo: '/icons/next.svg' },
+      { name: 'React', note: 'UI systems', logo: '/icons/react.svg' },
+      { name: 'TypeScript', note: 'type safety', logo: '/icons/ts.svg' },
+      { name: 'Tailwind CSS', note: 'design tokens', logo: '/icons/tailwiind.svg' },
+      { name: 'Framer Motion', note: 'motion', logo: '/icons/framer.svg' }
+    ]
+  },
+  {
+    icon: Database,
+    title: 'Content & Data',
+    desc: 'Structured content and business data stay flexible without creating a maintenance burden.',
+    proof: 'Code-first CMS models, relational data, clean APIs, and editor workflows.',
+    tools: [
+      { name: 'Payload CMS', note: 'headless CMS', logo: '/icons/payload.svg' },
+      { name: 'PostgreSQL', note: 'relational data', logo: '/icons/postgres.svg' },
+      { name: 'Node.js', note: 'runtime', logo: '/icons/node.svg' },
+      { name: 'Redis', note: 'cache/queues', logo: '/icons/redis.svg' },
+      { name: 'GraphQL', note: 'API layer', logo: '/icons/graphql.svg' }
+    ]
+  },
+  {
+    icon: Cpu,
+    title: 'AI & Automation',
+    desc: 'AI is planned around workflow value, latency, governance, and secure server-side execution.',
+    proof: 'Assistants, semantic search, generated content workflows, and process automation.',
+    tools: [
+      { name: 'OpenAI', note: 'AI features', logo: '/icons/open.svg' },
+      { name: 'Pinecone', note: 'vector search', logo: '/icons/pinecone.svg' },
+      { name: 'Streaming APIs', note: 'low latency', logo: '/icons/streaming.svg' },
+      { name: 'Guardrails', note: 'control', logo: '/icons/shield.svg' }
+    ]
+  },
+  {
+    icon: Globe,
+    title: 'Delivery & Operations',
+    desc: 'Every build ships with deployment, observability, backups, and a clean path for future changes.',
+    proof: 'Edge deployment, CI/CD, security checks, analytics, and release discipline.',
+    tools: [
+      { name: 'Cloudflare', note: 'edge/CDN', logo: '/icons/cloudflare.svg' },
+      { name: 'Docker', note: 'portable builds', logo: '/icons/docker.svg' },
+      { name: 'GitHub', note: 'source control', logo: '/icons/gitHub.svg' },
+      { name: 'Prometheus', note: 'metrics', logo: '/icons/prometheus.svg' },
+      { name: 'Nginx', note: 'proxy', logo: '/icons/nginx.svg' }
+    ]
+  },
+  {
+    icon: Palette,
+    title: 'Brand & Interface Systems',
+    desc: 'Design work is converted into durable tokens, reusable components, and accessible page patterns.',
+    proof: 'Brand systems, UX prototypes, content templates, and production-ready visual governance.',
+    tools: [
+      { name: 'Figma', note: 'interface design', logo: '/icons/figma.svg' },
+      { name: 'Illustrator', note: 'identity', logo: '/icons/illustrator.svg' },
+      { name: 'Photoshop', note: 'creative assets', logo: '/icons/photoshop.svg' },
+      { name: 'HTML', note: 'semantic markup', logo: '/icons/html.svg' },
+      { name: 'CSS', note: 'responsive polish', logo: '/icons/css.svg' }
+    ]
+  }
+];
+
+const stackPrinciples = [
+  {
+    title: 'Default to maintainable',
+    desc: 'We choose tools your team can understand, hire for, and extend after launch.'
+  },
+  {
+    title: 'Performance is architectural',
+    desc: 'Rendering strategy, caching, images, and data access are planned before UI production.'
+  },
+  {
+    title: 'Own the critical data',
+    desc: 'Content and business records stay portable, backed up, and free from unnecessary vendor lock-in.'
+  },
+  {
+    title: 'Ship with operations',
+    desc: 'Monitoring, rollback paths, documentation, and handover are part of the build, not extras.'
+  }
 ];
 
 export function SoftwareSystems() {
@@ -422,218 +484,103 @@ export function SoftwareSystems() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
             src="/images/software.png"
             alt="Software Development"
             fill
+            priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
+          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-black/65 to-green-950/45" />
+          <div className="absolute inset-0 bg-dot-grid opacity-30" />
         </div>
 
-        <div className="container-custom relative py-32">
+        <div className="container-custom relative py-32 md:py-40">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="max-w-4xl text-white"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border border-white/20 mb-8">
-              <Code className="w-4 h-4 text-green-500" />
-              <span className="text-sm font-medium">Software Engineering</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full glass-light border border-green-500/30 mb-10"
+            >
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-sm font-semibold tracking-wide text-green-400">Software Engineering & Digital Platforms</span>
+            </motion.div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Architecting High-Performance<br />
-              <span className="text-gradient-energy">Digital Experiences</span>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight mb-8">
+              Software Built for
+              <br />
+              <span className="text-gradient-energy">Business Outcomes.</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl">
-              We build production-grade web applications using the modern React ecosystem&mdash;Next.js, Payload CMS, and AI-powered capabilities.
+            <p className="text-xl md:text-2xl text-white/80 leading-relaxed max-w-2xl mb-6">
+              Production-grade web applications, content platforms, e-commerce systems, and AI-enabled workflows built on a maintainable modern stack.
             </p>
 
-            <p className="text-lg text-white/80 mb-12 max-w-2xl">
-              Unified by <span className="font-semibold text-green-500">strategic brand systems</span> that drive <span className="font-semibold text-green-500">measurable business outcomes</span>.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 mb-12">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-sm">Next.js & React</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-sm">90+ Lighthouse Scores</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <span className="text-sm">AI-Powered Features</span>
-              </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-12 text-white/70">
+              {['Typed architecture', 'Launch-ready operations', 'Performance by design'].map((item) => (
+                <div key={item} className="flex items-center space-x-2">
+                  <Check className="w-4 h-4 text-green-500" />
+                  <span className="text-sm font-medium">{item}</span>
+                </div>
+              ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
               <a
                 href="#contact"
-                className="group px-8 py-4 rounded-xl bg-green-500 text-black font-medium hover:scale-105 transition-all shadow-lg hover:shadow-2xl inline-flex items-center justify-center space-x-2"
+                className="group inline-flex items-center justify-center space-x-3 px-10 py-5 rounded-2xl bg-green-500 text-black font-bold text-lg hover:bg-green-400 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/30"
               >
-                <span>Request a Quote</span>
+                <span>Request a Software Consultation</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="#services"
-                className="group px-8 py-4 rounded-xl glass border border-white/30 font-medium hover:scale-105 hover:bg-white/10 transition-all inline-flex items-center justify-center space-x-2"
+                href="#stack"
+                className="group inline-flex items-center justify-center space-x-3 px-10 py-5 rounded-2xl glass-light border border-white/20 text-white font-bold text-lg hover:border-green-500/40 hover:bg-white/10 transition-all"
               >
-                <span>Explore Services</span>
+                <span>View Our Stack</span>
+                <GitBranch className="w-5 h-5 text-green-400" />
               </a>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-neutral-950 to-transparent" />
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-16 bg-neutral-950 text-white">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">90+</div>
-              <div className="text-sm text-neutral-400">Lighthouse Scores</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">2-3x</div>
-              <div className="text-sm text-neutral-400">Faster Time-to-Market</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">2s</div>
-              <div className="text-sm text-neutral-400">Avg Load Time</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-center"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">99.9%</div>
-              <div className="text-sm text-neutral-400">Uptime</div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Deliver */}
-      <section id="services" className="py-32 bg-background">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              What We <span className="text-gradient-energy">Deliver</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Scalable web applications and digital platforms that combine technical excellence with strategic thinking
-            </p>
-          </motion.div>
-
-          <div className="space-y-4 max-w-6xl mx-auto">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              const isExpanded = expandedService === index;
-
+      <section className="relative py-20 section-dark overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-20" />
+        <div className="container-custom relative">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
               return (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="glass rounded-2xl overflow-hidden"
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="text-center group"
                 >
-                  <button
-                    onClick={() => setExpandedService(isExpanded ? null : index)}
-                    className="w-full p-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                  >
-                    <div className="flex items-center space-x-6">
-                      <div className="w-16 h-16 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-8 h-8 text-black" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
-                        <p className="text-muted-foreground">{service.description}</p>
-                      </div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="w-6 h-6 text-muted-foreground" />
-                    </motion.div>
-                  </button>
-
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: isExpanded ? 'auto' : 0,
-                      opacity: isExpanded ? 1 : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="p-8 pt-0">
-                      <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                          <div className="space-y-6">
-                            {service.features.map((feature, idx) => (
-                              <div key={idx}>
-                                <h4 className="font-semibold mb-3 text-green-500 flex items-center space-x-2">
-                                  <CheckCircle className="w-5 h-5" />
-                                  <span>{feature.title}</span>
-                                </h4>
-                                <ul className="space-y-2 ml-7">
-                                  {feature.details.map((detail, detailIdx) => (
-                                    <li key={detailIdx} className="text-muted-foreground text-sm">
-                                      &bull; {detail}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="relative h-80 rounded-xl overflow-hidden">
-                          <ImageWithFallback
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            className="object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 mb-4 group-hover:bg-green-500/20 transition-colors">
+                    <Icon className="w-5 h-5 text-green-500" />
+                  </div>
+                  <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2 tracking-tight">{stat.value}</div>
+                  <div className="text-sm text-neutral-400 leading-tight max-w-[180px] mx-auto">{stat.label}</div>
                 </motion.div>
               );
             })}
@@ -641,8 +588,7 @@ export function SoftwareSystems() {
         </div>
       </section>
 
-      {/* Business Impact */}
-      <section className="py-32 bg-neutral-50">
+      <section id="services" className="py-28 md:py-36 bg-background">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -650,35 +596,125 @@ export function SoftwareSystems() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Business Impact You Can <span className="text-gradient-energy">Measure</span>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-600 text-sm font-semibold mb-6 border border-green-500/20">
+              What We Deliver
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+              Digital Systems That
+              <br className="hidden md:block" />
+              <span className="text-gradient-energy">Work Like Infrastructure</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real results from modern development practices
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Strategy, design, engineering, content, integrations, and operations handled as one connected delivery system.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {businessImpact.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="glass rounded-2xl p-8"
-              >
-                <h3 className="text-xl font-bold mb-3">{item.capability}</h3>
-                <p className="text-muted-foreground mb-4 text-sm">{item.outcome}</p>
-                <div className="text-3xl font-bold text-green-500">{item.result}</div>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6 mb-6 max-w-7xl mx-auto">
+            {services.slice(0, 2).map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, duration: 0.5 }}
+                  className="group relative rounded-3xl overflow-hidden border border-neutral-200 hover:border-green-500/40 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/5"
+                >
+                  <div className="absolute inset-0">
+                    <ImageWithFallback
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
+                  </div>
+
+                  <div className="relative p-8 md:p-10 min-h-[420px] flex flex-col justify-end text-white">
+                    <div className="absolute top-6 right-6 px-3 py-1 rounded-full bg-green-500 text-black text-xs font-bold">
+                      Core Service
+                    </div>
+                    <div className="w-14 h-14 rounded-2xl bg-green-500 flex items-center justify-center mb-5 shadow-lg shadow-green-500/25">
+                      <Icon className="w-7 h-7 text-black" />
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3">{service.title}</h3>
+                    <p className="text-white/70 mb-6 max-w-md">{service.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {service.features.flatMap((feature) => feature.details).slice(0, 6).map((feature) => (
+                        <div key={feature} className="flex items-center space-x-2">
+                          <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                          <span className="text-sm text-white/80">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
+            {services.slice(2).map((service, index) => {
+              const Icon = service.icon;
+              const serviceIndex = index + 2;
+              const isExpanded = expandedService === serviceIndex;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05, duration: 0.4 }}
+                  className="group relative glass rounded-2xl p-6 border border-neutral-200 hover:border-green-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/5 hover:-translate-y-1"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setExpandedService(isExpanded ? null : serviceIndex)}
+                    className="w-full text-left"
+                    aria-expanded={isExpanded}
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center group-hover:bg-green-500 group-hover:border-green-500 transition-all duration-300">
+                        <Icon className="w-6 h-6 text-green-600 group-hover:text-black transition-colors duration-300" />
+                      </div>
+                      <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.25 }}>
+                        <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                      </motion.div>
+                    </div>
+                    <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.description}</p>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-5 mt-5 border-t border-neutral-200 space-y-2">
+                          {service.features.flatMap((feature) => feature.details).slice(0, 5).map((feature) => (
+                            <div key={feature} className="flex items-start space-x-2">
+                              <Check className="w-3.5 h-3.5 text-green-500 mt-0.5 flex-shrink-0" />
+                              <span className="text-xs text-muted-foreground">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* What Sets Us Apart */}
-      <section className="py-32 bg-background">
+      <section className="py-28 md:py-36 gradient-green-black text-white overflow-hidden">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -686,31 +722,36 @@ export function SoftwareSystems() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              What Sets <span className="text-gradient-energy">Us Apart</span>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-6 border border-green-500/20">
+              Why Digital Sense
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+              Software That Supports
+              <br className="hidden md:block" />
+              <span className="text-green-400">Real Operations</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Technical excellence meets strategic thinking
+            <p className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto">
+              We combine consulting, engineering, design, and lifecycle thinking so platforms stay useful after launch.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {whyChoose.map((item, index) => {
               const Icon = item.icon;
               return (
                 <motion.div
-                  key={index}
+                  key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="glass rounded-2xl p-8"
+                  transition={{ delay: index * 0.1, duration: 0.4 }}
+                  className="group glass-dark rounded-2xl p-8 border border-white/10 hover:border-green-500/30 transition-all duration-300 hover:bg-white/5"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-green-500 flex items-center justify-center mb-6">
-                    <Icon className="w-7 h-7 text-black" />
+                  <div className="w-12 h-12 rounded-xl bg-green-500/15 border border-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500 transition-all duration-300">
+                    <Icon className="w-6 h-6 text-green-500 group-hover:text-black transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
+                  <p className="text-neutral-400 text-sm leading-relaxed">{item.description}</p>
                 </motion.div>
               );
             })}
@@ -718,8 +759,7 @@ export function SoftwareSystems() {
         </div>
       </section>
 
-      {/* Technology Stack */}
-      <section className="py-32 bg-neutral-950 text-white overflow-hidden">
+      <section className="py-28 md:py-36 section-gray">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -727,98 +767,242 @@ export function SoftwareSystems() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              State-of-the-Art <span className="text-gradient-energy">Technology Stack</span>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-600 text-sm font-semibold mb-6 border border-green-500/20">
+              Business Impact
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+              Outcomes You Can
+              <br className="hidden md:block" />
+              <span className="text-gradient-energy">Measure After Launch</span>
             </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              We work with industry-leading frameworks and tools
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              The stack, process, and UX decisions are selected around operational value.
             </p>
           </motion.div>
 
-          <div className="space-y-12">
-            {techStack.map((stack, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {businessImpact.map((item, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <h3 className="text-sm font-semibold text-green-500 mb-4 uppercase tracking-wider">
-                  {stack.category}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {stack.logos.map((logo, logoIndex) => (
-                    <div
-                      key={logoIndex}
-                      className="px-6 py-3 rounded-lg glass border border-white/10 text-sm font-medium text-white/80 hover:border-green-500/50 hover:text-white transition-all"
-                    >
-                      {logo}
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Engineering Process */}
-      <section className="py-32 bg-background">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Our Engineering <span className="text-gradient-energy">Process</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Proven methodology from discovery to ongoing partnership
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
+                key={item.capability}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: (index % 3) * 0.1 }}
-                className="glass rounded-2xl p-8"
+                transition={{ delay: index * 0.08, duration: 0.4 }}
+                className="glass rounded-2xl p-8 border border-neutral-200 hover:border-green-500/30 hover:shadow-xl hover:shadow-green-500/5 transition-all"
               >
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl font-bold text-black">{index + 1}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">{step.phase}</h3>
-                    <p className="text-sm text-green-500 font-medium">{step.duration}</p>
-                  </div>
-                </div>
-                <p className="text-muted-foreground mb-6 text-sm">{step.description}</p>
-                <div>
-                  <h4 className="font-semibold mb-3 text-xs text-muted-foreground uppercase tracking-wider">Deliverables</h4>
-                  <ul className="space-y-2">
-                    {step.deliverables.map((deliverable, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{deliverable}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <div className="text-3xl font-bold text-green-500 mb-4">{item.result}</div>
+                <h3 className="text-xl font-bold mb-3">{item.capability}</h3>
+                <p className="text-sm text-muted-foreground">{item.outcome}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Next.js + Payload CMS */}
-      <section className="py-32 bg-neutral-50">
+      <section id="stack" className="relative py-28 md:py-36 bg-neutral-950 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-circuit opacity-30" />
+        <div className="container-custom relative">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16 max-w-7xl mx-auto items-start">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="lg:sticky lg:top-28"
+            >
+              <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-6 border border-green-500/20">
+                Technology Stack
+              </span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                Modern Tools,
+                <br />
+                <span className="text-gradient-energy">Selected With Restraint</span>
+              </h2>
+              <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
+                The stack is not a logo wall. We pick technology by the job it performs, the people who will maintain it, and the operational risk it removes.
+              </p>
+
+              <div className="space-y-4">
+                {stackPrinciples.map((principle, index) => (
+                  <motion.div
+                    key={principle.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-green-500/15 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-bold text-green-400">{index + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-white mb-1">{principle.title}</h3>
+                      <p className="text-sm text-neutral-400 leading-relaxed">{principle.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <div className="space-y-4">
+              {techStack.map((stack, index) => {
+                const Icon = stack.icon;
+                return (
+                  <motion.div
+                    key={stack.title}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                    className="glass-dark rounded-2xl p-6 md:p-7 border border-white/10 hover:border-green-500/30 transition-all duration-300"
+                  >
+                    <div className="flex flex-col md:flex-row md:items-start gap-5">
+                      <div className="w-12 h-12 rounded-xl bg-green-500/15 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-6 h-6 text-green-400" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-3">
+                          <div>
+                            <h3 className="text-xl font-bold text-white">{stack.title}</h3>
+                            <p className="text-sm text-neutral-400 mt-1 leading-relaxed">{stack.desc}</p>
+                          </div>
+                          <div className="shrink-0 text-xs font-semibold text-green-400 bg-green-500/10 border border-green-500/20 rounded-full px-3 py-1 w-fit">
+                            {stack.tools.length} tools
+                          </div>
+                        </div>
+
+                        <p className="text-xs text-neutral-500 mb-5">{stack.proof}</p>
+
+                        <div className="flex flex-wrap gap-2.5">
+                          {stack.tools.map((tool) => (
+                            <div
+                              key={tool.name}
+                              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2 text-left hover:border-green-500/30 hover:bg-green-500/10 transition-all"
+                            >
+                              {tool.logo ? (
+                                <span className="relative w-5 h-5 rounded bg-white flex items-center justify-center overflow-hidden">
+                                  <ImageWithFallback
+                                    src={tool.logo}
+                                    alt={`${tool.name} logo`}
+                                    width={20}
+                                    height={20}
+                                    className="w-4 h-4 object-contain"
+                                  />
+                                </span>
+                              ) : (
+                                <span className="w-5 h-5 rounded bg-green-500/15 text-green-400 flex items-center justify-center text-[10px] font-bold">
+                                  {tool.name.slice(0, 1)}
+                                </span>
+                              )}
+                              <span>
+                                <span className="block text-sm font-semibold leading-none text-white">{tool.name}</span>
+                                <span className="block text-[11px] leading-tight text-neutral-500 mt-1">{tool.note}</span>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-28 md:py-36 bg-background">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-600 text-sm font-semibold mb-6 border border-green-500/20">
+              How It Works
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+              From Discovery to
+              <br className="hidden md:block" />
+              <span className="text-gradient-energy">Continuous Improvement</span>
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              A practical delivery path with enough structure to reduce risk and enough flexibility to adapt.
+            </p>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto">
+            <div className="hidden lg:grid lg:grid-cols-5 gap-5 relative">
+              <div className="absolute top-[72px] left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-green-500/20 via-green-500 to-green-500/20" />
+
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.phase}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.12, duration: 0.4 }}
+                  className="relative text-center"
+                >
+                  <div className="relative z-10 mx-auto w-16 h-16 rounded-2xl bg-green-500 flex items-center justify-center mb-6 shadow-lg shadow-green-500/25">
+                    <span className="text-2xl font-bold text-black">{index + 1}</span>
+                  </div>
+                  <div className="glass rounded-2xl p-6 border border-neutral-200 hover:border-green-500/30 hover:shadow-lg transition-all h-full">
+                    <div className="text-xs font-semibold text-green-600 mb-2 uppercase tracking-wider">{step.duration}</div>
+                    <h3 className="text-lg font-bold mb-3">{step.phase}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+                    <div className="space-y-2">
+                      {step.deliverables.map((deliverable) => (
+                        <div key={deliverable} className="flex items-center space-x-2 text-left">
+                          <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                          <span className="text-xs text-muted-foreground">{deliverable}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="lg:hidden space-y-6">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.phase}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex gap-4"
+                >
+                  <div className="flex-shrink-0">
+                    <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/25">
+                      <span className="text-lg font-bold text-black">{index + 1}</span>
+                    </div>
+                    {index < processSteps.length - 1 && (
+                      <div className="w-0.5 h-full bg-green-500/20 mx-auto mt-2" />
+                    )}
+                  </div>
+                  <div className="glass rounded-2xl p-6 border border-neutral-200 flex-1 mb-2">
+                    <div className="text-xs font-semibold text-green-600 mb-1 uppercase tracking-wider">{step.duration}</div>
+                    <h3 className="text-lg font-bold mb-2">{step.phase}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{step.description}</p>
+                    <div className="space-y-2">
+                      {step.deliverables.map((deliverable) => (
+                        <div key={deliverable} className="flex items-center space-x-2">
+                          <Check className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />
+                          <span className="text-xs text-muted-foreground">{deliverable}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-28 md:py-36 section-gray">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -827,30 +1011,33 @@ export function SoftwareSystems() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-600 text-sm font-semibold mb-6 border border-green-500/20">
+                Recommended Core
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
                 Why <span className="text-gradient-energy">Next.js + Payload CMS?</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
-                This technology pairing represents the state of the art for content-driven applications
+              <p className="text-lg md:text-xl text-muted-foreground">
+                This pairing gives content teams control while keeping engineering close to the data model, front end, and deployment pipeline.
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-5">
               {[
-                { title: 'Type Safety End-to-End', desc: 'Both frameworks are TypeScript-native, eliminating entire classes of runtime errors' },
-                { title: 'Developer Velocity', desc: 'Rapid local development with instant feedback loops accelerates iteration' },
-                { title: 'Content Flexibility', desc: 'Code-first CMS enables complex relationships impossible in traditional platforms' },
-                { title: 'Performance by Default', desc: 'Server Components minimize client-side JavaScript for superior Core Web Vitals' },
-                { title: 'Data Sovereignty', desc: 'Your content lives in your database, not locked in a third-party SaaS platform' },
-                { title: 'Cost Predictability', desc: 'No per-seat or per-content-type pricing that escalates with growth' }
+                { title: 'Type Safety End-to-End', desc: 'Both frameworks are TypeScript-native, reducing avoidable runtime failures.' },
+                { title: 'Content Flexibility', desc: 'Code-first CMS models support complex relationships without forcing a SaaS template.' },
+                { title: 'Performance by Default', desc: 'Server Components, caching, and edge delivery reduce unnecessary client-side weight.' },
+                { title: 'Data Sovereignty', desc: 'Content can live in your database, with cleaner backup, migration, and ownership paths.' },
+                { title: 'Cost Predictability', desc: 'Avoid per-seat and per-content-type pricing that scales badly with growth.' },
+                { title: 'Editor Confidence', desc: 'Structured fields, roles, previews, and workflows make content operations safer.' }
               ].map((item, index) => (
                 <motion.div
-                  key={index}
+                  key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="glass rounded-2xl p-6"
+                  transition={{ delay: index * 0.08 }}
+                  className="glass rounded-2xl p-6 border border-neutral-200 hover:border-green-500/30 transition-all"
                 >
                   <h3 className="font-bold mb-3 text-lg">{item.title}</h3>
                   <p className="text-muted-foreground text-sm">{item.desc}</p>
@@ -861,8 +1048,7 @@ export function SoftwareSystems() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-32 bg-background">
+      <section className="py-28 md:py-36 bg-background">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -870,8 +1056,13 @@ export function SoftwareSystems() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
-              Frequently Asked <span className="text-gradient-energy">Questions</span>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-600 text-sm font-semibold mb-6 border border-green-500/20">
+              FAQ
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+              Software Development
+              <br className="hidden md:block" />
+              <span className="text-gradient-energy">Questions</span>
             </h2>
           </motion.div>
 
@@ -880,22 +1071,21 @@ export function SoftwareSystems() {
               const isExpanded = expandedFaq === index;
               return (
                 <motion.div
-                  key={index}
+                  key={faq.question}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="glass rounded-2xl overflow-hidden"
+                  transition={{ delay: index * 0.04 }}
+                  className="glass rounded-2xl overflow-hidden border border-neutral-200 hover:border-green-500/30 transition-all"
                 >
                   <button
+                    type="button"
                     onClick={() => setExpandedFaq(isExpanded ? null : index)}
-                    className="w-full p-6 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                    className="w-full p-6 flex items-center justify-between text-left hover:bg-green-500/5 transition-colors"
+                    aria-expanded={isExpanded}
                   >
                     <h3 className="text-lg font-semibold pr-8">{faq.question}</h3>
-                    <motion.div
-                      animate={{ rotate: isExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     </motion.div>
                   </button>
@@ -919,76 +1109,75 @@ export function SoftwareSystems() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-32 bg-neutral-50">
-        <div className="container-custom">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to Build Something <span className="text-gradient-energy">Exceptional?</span>
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Schedule a consultation to discuss your business objectives and technical requirements
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12">
+      <section id="contact" className="relative py-28 md:py-36 gradient-green-black text-white overflow-hidden">
+        <div className="container-custom relative">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                className="text-white"
               >
-                <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
-                <div className="space-y-6">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 text-green-400 text-sm font-semibold mb-8 border border-green-500/20">
+                  Start a Project
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
+                  Ready to Build
+                  <br />
+                  <span className="text-green-400">Something Useful?</span>
+                </h2>
+                <p className="text-lg text-neutral-300 mb-10 leading-relaxed">
+                  Share the business problem, current systems, and launch constraints. We will shape the right scope before writing code.
+                </p>
+
+                <div className="space-y-6 mb-10">
+                  {[
+                    { icon: CalendarCheck, title: 'Discovery call within 24 hours', desc: 'We clarify goals, stakeholders, timeline, and budget range.' },
+                    { icon: Layers, title: 'Architecture and scope proposal', desc: 'You get a practical roadmap with the stack, phases, and risks.' },
+                    { icon: GitBranch, title: 'Iterative build with demos', desc: 'Working software is reviewed early instead of waiting until the end.' },
+                    { icon: Rocket, title: 'Launch and handover', desc: 'Deployment, analytics, documentation, and training are included.' },
+                  ].map((step, index) => {
+                    const Icon = step.icon;
+                    return (
+                      <motion.div
+                        key={step.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 + index * 0.1 }}
+                        className="flex items-start space-x-4"
+                      >
+                        <div className="w-10 h-10 rounded-xl bg-green-500/15 border border-green-500/20 flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-5 h-5 text-green-500" />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white text-sm">{step.title}</div>
+                          <div className="text-xs text-neutral-400 mt-0.5">{step.desc}</div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 p-5 rounded-xl glass-dark border border-white/10">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-black" />
-                    </div>
+                    <Mail className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <div className="font-semibold mb-1">Email</div>
-                      <a href="mailto:connect@digitalsense.tech" className="text-green-500 hover:underline">
+                      <div className="text-sm font-medium text-white">Email</div>
+                      <a href="mailto:connect@digitalsense.tech" className="text-green-400 hover:underline text-sm break-all">
                         connect@digitalsense.tech
                       </a>
                     </div>
                   </div>
-
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-green-500 flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-black" />
-                    </div>
+                    <Phone className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                     <div>
-                      <div className="font-semibold mb-1">Phone</div>
-                      <a href="tel:+260978980494" className="text-green-500 hover:underline">
+                      <div className="text-sm font-medium text-white">Phone</div>
+                      <a href="tel:+260978980494" className="text-green-400 hover:underline text-sm">
                         +260 978 980 494
                       </a>
-                      <div className="text-sm text-muted-foreground mt-1">
-                        Monday-Friday, 08:00-17:00 CAT
-                      </div>
                     </div>
-                  </div>
-
-                  <div className="p-6 rounded-xl bg-green-500/10 border border-green-500/20">
-                    <h4 className="font-semibold mb-4">What Happens Next?</h4>
-                    <ol className="space-y-3">
-                      {[
-                        'Discovery call within 24 hours',
-                        'Detailed proposal and timeline (3-5 days)',
-                        'Design and architecture phase begins',
-                        'Iterative development with regular demos'
-                      ].map((step, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <span className="text-xs font-bold text-green-500">{index + 1}</span>
-                          </div>
-                          <span className="text-sm text-muted-foreground">{step}</span>
-                        </li>
-                      ))}
-                    </ol>
                   </div>
                 </div>
               </motion.div>
@@ -997,6 +1186,7 @@ export function SoftwareSystems() {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                className="bg-white rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/20"
               >
                 <RFQForm presetService="software" />
               </motion.div>

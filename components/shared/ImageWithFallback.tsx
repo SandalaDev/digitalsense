@@ -11,6 +11,7 @@ interface ImageWithFallbackProps {
     height?: number;
     fill?: boolean;
     priority?: boolean;
+    sizes?: string;
 }
 
 export function ImageWithFallback({
@@ -21,12 +22,11 @@ export function ImageWithFallback({
     height,
     fill = false,
     priority = false,
+    sizes = '100vw',
 }: ImageWithFallbackProps) {
     const [imgSrc, setImgSrc] = useState(src);
-    const [hasError, setHasError] = useState(false);
 
     const handleError = () => {
-        setHasError(true);
         // Fallback to a gradient placeholder
         setImgSrc('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100"%3E%3Crect fill="%23ddd" width="100" height="100"/%3E%3C/svg%3E');
     };
@@ -40,6 +40,7 @@ export function ImageWithFallback({
                 className={className}
                 onError={handleError}
                 priority={priority}
+                sizes={sizes}
             />
         );
     }

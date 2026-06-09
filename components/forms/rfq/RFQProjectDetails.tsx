@@ -69,16 +69,16 @@ export function RFQProjectDetails({ register, errors, watch, minLength = 50, max
         </label>
         <select
           id="rfq-budgetRange"
-          className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
+          className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors [&>option]:bg-white [&>option]:text-neutral-900"
           {...register('budgetRange')}
         >
-          <option value="">Select...</option>
-          <option value="under-5k">Under $5,000</option>
-          <option value="5k-15k">$5,000 - $15,000</option>
-          <option value="15k-50k">$15,000 - $50,000</option>
-          <option value="50k-100k">$50,000 - $100,000</option>
-          <option value="100k-plus">$100,000+</option>
-          <option value="not-sure">Not sure yet</option>
+          <option value="" className="bg-white text-neutral-900">Select...</option>
+          <option value="under-5k" className="bg-white text-neutral-900">Under $5,000</option>
+          <option value="5k-15k" className="bg-white text-neutral-900">$5,000 - $15,000</option>
+          <option value="15k-50k" className="bg-white text-neutral-900">$15,000 - $50,000</option>
+          <option value="50k-100k" className="bg-white text-neutral-900">$50,000 - $100,000</option>
+          <option value="100k-plus" className="bg-white text-neutral-900">$100,000+</option>
+          <option value="not-sure" className="bg-white text-neutral-900">Not sure yet</option>
         </select>
       </div>
 
@@ -88,16 +88,16 @@ export function RFQProjectDetails({ register, errors, watch, minLength = 50, max
         </label>
         <select
           id="rfq-referralSource"
-          className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm focus:outline-none focus:ring-1 focus:ring-ring transition-colors"
+          className="w-full px-3 py-2 rounded-md border border-input bg-input-background text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring transition-colors [&>option]:bg-white [&>option]:text-neutral-900"
           {...register('referralSource')}
         >
-          <option value="">Select...</option>
-          <option value="google">Google Search</option>
-          <option value="social">Social Media</option>
-          <option value="referral">Referral</option>
-          <option value="client">Existing Client</option>
-          <option value="event">Event / Conference</option>
-          <option value="other">Other</option>
+          <option value="" className="bg-white text-neutral-900">Select...</option>
+          <option value="google" className="bg-white text-neutral-900">Google Search</option>
+          <option value="social" className="bg-white text-neutral-900">Social Media</option>
+          <option value="referral" className="bg-white text-neutral-900">Referral</option>
+          <option value="client" className="bg-white text-neutral-900">Existing Client</option>
+          <option value="event" className="bg-white text-neutral-900">Event / Conference</option>
+          <option value="other" className="bg-white text-neutral-900">Other</option>
         </select>
       </div>
     </div>
